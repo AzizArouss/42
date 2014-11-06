@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/06 13:31:52 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/06 16:19:52 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,10 @@ int		ft_isalnum(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-int		ft_memcmp(const	void *s1, const void *s2, size_t n);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
+
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
@@ -50,6 +53,9 @@ size_t	ft_strlen(const char *s);
 
 char	*ft_strcpy(char *s1, const char *s2);
 char	*ft_strncpy(char *s1, const char *s2, size_t n);
+
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strncat(char *s1, const char *s2, size_t n);
