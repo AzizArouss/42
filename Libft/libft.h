@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/07 09:26:18 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/07 10:03:37 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+
 
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);
