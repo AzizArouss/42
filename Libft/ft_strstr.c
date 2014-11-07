@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strcmp.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 09:32:23 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/07 12:26:41 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/07 10:54:13 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/07 13:08:02 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	int		i;
+	int	i;
+	int	j;
 
+	j = 0;
 	i = 0;
-	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
+	if (s2[0] == '\0' || s2 == NULL)
+		return ((char *)s1);
+	while (s1[i])
+	{
+		if (s1[i] == s2[j])
+			j++;
+		else
+			j = 0;
+		if (!s2[j])
+			return ((char *)s1 + (i - (j - 1)));
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (NULL);
 }
