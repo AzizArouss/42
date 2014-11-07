@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 08:22:19 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/07 09:26:22 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/07 09:27:47 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/07 09:49:25 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char dst, const char *src, size_t size)
+int		ft_atoi(const char *str)
 {
-	size_t	i;
-	size_t	dstlen;
-	size_t	srclen;
+	int		nb;
+	int		i;
+	int		cond;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	if (size < dstlen)
-	{
-		return (size + srclen);
-	}
+	nb = 0;
 	i = 0;
-	while (src[i] != '\0' && (dstlen + i + 1) < size)
+	cond = 0;
+	while ((str[i] >= 48 && str[i] <= 57) || str[0] == 43 || str[0] == 45)
 	{
-		dst[dstlen + i] = src[i];
+		if (str[0] == 45 || str[0] == 43)
+		{
+			if (str[0] == 45)
+				cond = 1;
+			i++;
+		}
+		nb = nb * 10;
+		nb = nb + str[i] - 48;
 		i++;
 	}
-	dst[dstlen + i] = '\0';
-	return (dstlen + srclen);
+	if (cond == 1)
+		nb = -nb;
+	return (nb);
 }
