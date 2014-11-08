@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_striter.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 17:10:48 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/08 11:47:10 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/08 16:05:26 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/08 17:50:00 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_striter(char *s, void (*f)(char *));
-{
-	int		lenght;
-	int		i;
+char *ft_itoa(int n)
 
-	if (s && f)
-	{
-		lenght = ft_strlen(s);
-		i = 0;
-		while (i < lenght)
-		{
-			f(&(s[i]));
-			i++;
-		}
-	}
-}
