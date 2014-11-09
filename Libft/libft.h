@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/08 18:11:54 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/09 12:29:38 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_isalnum(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-int		ft_strequ(char cont *s1, char cosnt *s2)
+int		ft_strequ(char cont *s1, char const *s2)
 int		ft_strnequ(char const *s1, char const *s2, size_t n)
 
 int		ft_tolower(int c);i
