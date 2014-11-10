@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/09 17:20:42 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/10 15:47:50 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int		ft_isalnum(int c);
 int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
-int		ft_strequ(char cont *s1, char const *s2)
-int		ft_strnequ(char const *s1, char const *s2, size_t n)
+int		ft_strequ(char const *s1, char const *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t n);
 
-int		ft_tolower(int c);i
+int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -56,7 +56,7 @@ void	ft_memdel(void **ap);
 void	ft_strdel(char **as);
 
 void	ft_striter(char *s, void (*f)(char *));
-void	ft_strteri(char *s, void (*f)(unsigned int, char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 void	*ft_memset(void *d, int c, size_t n);
 void	*ft_memcpy(void *s1, const void *s2, size_t n);
@@ -64,7 +64,6 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memalloc(size_t size);
-void	*ft_memmove(void *dst, const void *src, size_t len);
 
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcat(char dst, const char *src, size_t size);
