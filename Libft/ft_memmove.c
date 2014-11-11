@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 18:14:29 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/10 09:00:03 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/11 11:54:21 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n)
 	size_t		i;
 
 	ptrd = (char *)dst;
-	ptrs = (const char *s)src;
+	ptrs = (const char *)src;
 	i = 0;
 	while (i < n)
 	{

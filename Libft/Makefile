@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/10 18:30:36 by aarouss          ###   ########.fr        #
+#    Updated: 2014/11/11 11:41:53 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ FILES = ft_isalpha.c \
 		ft_memdel.c \
 		ft_strdel.c \
 		ft_striter.c \
-		ft_strteri.c \
+		ft_striteri.c \
 		ft_memset.c \
 		ft_memcpy.c \
 		ft_memccpy.c \
