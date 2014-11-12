@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/11 16:18:19 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/12 12:18:48 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memalloc(size_t size);
 size_t	ft_strlen(const char *s);
-size_t	ft_strlcat(char dst, const char *src, size_t size);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_strcpy(char *s1, const char *s2);
 char	*ft_strncpy(char *s1, const char *s2, size_t n);
 char	*ft_strmap(char const *s, char (*f)(char));

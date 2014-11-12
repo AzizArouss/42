@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/11 11:41:53 by aarouss          ###   ########.fr        #
+#    Updated: 2014/11/12 12:00:18 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,8 @@ FILES = ft_isalpha.c \
 		ft_strnew.c \
 		ft_strsub.c \
 		ft_strtrim.c \
-		ft_itoa.c \
-		ft_strsplit.c \
+		#ft_itoa.c \
+		ft_strsplit.c \#
 
 all: $(NAME)
 
