@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 17:39:46 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/12 11:56:30 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/14 07:51:39 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	{
 		length = ft_strlen(s);
 		i = 0;
-		out = (char *) malloc(sizeof(char) * (length + 1));
+		out = (char *)malloc(sizeof(char) * (length + 1));
 		if (out)
 		{
 			while (i < length)
