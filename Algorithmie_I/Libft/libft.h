@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 08:59:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 07:58:55 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/14 15:07:32 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_atoi(const char *str);
 void	ft_strdel(char **as);
 void	ft_putchar(char c);
 void	ft_putchar_fd(char c, int fd);

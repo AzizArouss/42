@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 09:27:47 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/08 17:44:55 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/14 16:46:00 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,26 @@ int		ft_atoi(const char *str)
 {
 	int		nb;
 	int		i;
-	int		cond;
+	int		sign;
 
 	nb = 0;
 	i = 0;
-	cond = 0;
-	while ((str[i] >= 48 && str[i] <= 57) || str[0] == 43 || str[0] == 45)
+	sign = 1;
+
+	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\v' || str[i] == '\t' 
+			|| str[i] == '\r' || str[i] == '\f')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[0] == 45 || str[0] == 43)
-		{
-			if (str[0] == 45)
-				cond = 1;
-			i++;
-		}
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
 		nb = nb * 10;
 		nb = nb + str[i] - 48;
 		i++;
 	}
-	if (cond == 1)
-		nb = -nb;
-	return (nb);
+	return (nb * sign);
 }

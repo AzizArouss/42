@@ -6,7 +6,7 @@
 /*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2014/11/14 08:21:02 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/14 18:17:32 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,26 +213,26 @@ D_ADD_TEST(strnstr);
 #define	D_STRSUB
 	D_ADD_TEST(strsub);
 #define D_STRJOIN
- D_ADD_TEST(strjoin);
-/*#define	D_STRSPLIT
-D_ADD_TEST(strsplit);
-#define	D_ITOA
-D_ADD_TEST(itoa);
+	D_ADD_TEST(strjoin);
+//#define	D_STRSPLIT
+//	D_ADD_TEST(strsplit);
+//#define	D_ITOA
+//	D_ADD_TEST(itoa);
 #define	D_STRTRIM
-D_ADD_TEST(strtrim);
-#define	D_LSTNEW
-D_ADD_TEST(lstnew);
-#define	D_LSTDELONE
-D_ADD_TEST(lstdelone);
-#define	D_LSTDEL
-D_ADD_TEST(lstdel);
-#define	D_LSTADD
-D_ADD_TEST(lstadd);
-#define	D_LSTITER
-D_ADD_TEST(lstiter);
-#define D_LSTMAP
-D_ADD_TEST(lstmap);
-*/
+	D_ADD_TEST(strtrim);
+//#define	D_LSTNEW
+//	D_ADD_TEST(lstnew);
+//#define	D_LSTDELONE
+//	D_ADD_TEST(lstdelone);
+//#define	D_LSTDEL
+//	D_ADD_TEST(lstdel);
+//#define	D_LSTADD
+//	D_ADD_TEST(lstadd);
+//#define	D_LSTITER
+//	D_ADD_TEST(lstiter);
+//#define D_LSTMAP
+//	D_ADD_TEST(lstmap);
+
 	while (test[i].set == true)
 	{
 		printf("Test [%s] : ", test[i].name);
