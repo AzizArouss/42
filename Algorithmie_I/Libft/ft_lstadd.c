@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   lstadd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 15:14:58 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/17 07:27:00 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/17 07:13:54 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/17 08:15:36 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (ap)
+	if (alst != NULL && new != NULL)
 	{
-		free(*ap);
-		*ap = NULL;
+		new->next = *alst;
+		*alst = new;
 	}
 }
