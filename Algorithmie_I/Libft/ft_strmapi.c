@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 17:52:33 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/18 15:56:24 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/18 16:46:14 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	out = (char *)malloc(sizeof(char) * (length + 1));
 	if (out)
+	{
+		while (i < length)
 		{
-			while (i < length)
-			{
-				out[i] = f(i, s[i]);
-				i++;
-			}
-			out[i] = '\0';
+			out[i] = f(i, s[i]);
+			i++;
 		}
+		out[i] = '\0';
+	}
 	return (out);
 }
