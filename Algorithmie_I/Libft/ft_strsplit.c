@@ -6,13 +6,13 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 17:50:14 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/18 09:37:49 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/18 14:07:25 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t ft_count_split(char const *s, char c)
+static size_t	ft_count_split(char const *s, char c)
 {
 	size_t	split_count;
 	size_t	i;
@@ -32,7 +32,7 @@ static size_t ft_count_split(char const *s, char c)
 	return (split_count);
 }
 
-char **ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	size_t	split_i;
 	size_t	i;
