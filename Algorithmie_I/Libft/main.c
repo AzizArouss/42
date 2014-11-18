@@ -6,7 +6,7 @@
 /*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2014/11/17 17:21:05 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/18 08:59:39 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	uf_test_lstdelone(void);
 int	uf_test_lstdel(void);
 int	uf_test_lstadd(void);
 int	uf_test_lstiter(void);
-int uf_test_lstmap(void);
+int	uf_test_lstmap(void);
 
 typedef struct	s_test
 {
@@ -214,8 +214,8 @@ D_ADD_TEST(strnstr);
 	D_ADD_TEST(strsub);
 #define D_STRJOIN
 	D_ADD_TEST(strjoin);
-//#define	D_STRSPLIT
-//	D_ADD_TEST(strsplit);
+#define	D_STRSPLIT
+	D_ADD_TEST(strsplit);
 #define	D_ITOA
 	D_ADD_TEST(itoa);
 #define	D_STRTRIM
@@ -591,7 +591,7 @@ int					uf_test_strsplit(void)
 		printf("Error Line %d, Funct %s : \n\033[1;31mft_strsplit(\"*hel****lo*\", '*').\nExpected tab[0] = \"hel\", tab[1] = \"lo\" and tab[2] = NULL \
 				but have tab[0] = \"%s\", tab[1] = \"%s\" and tab[2] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2]);
 		uf_free_tab((void **)ret);
-		return (0);)
+		return (0);
 	}
 	if (uf_free_tab((void **)ret) == 0)
 	{
