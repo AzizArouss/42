@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 09:29:12 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 14:57:31 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/18 15:22:19 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	if (s == NULL)
-		return (0);
 	while (s[i])
 		i++;
 	return (i);
