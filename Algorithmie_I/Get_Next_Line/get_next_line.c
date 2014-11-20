@@ -6,11 +6,24 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 08:47:42 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/20 14:11:16 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/20 17:41:48 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*biggerbuff(int const fd, char *buf, int *ret)
+{
+	char	tmp[BUFF_SIZE + 1];
+	char	*tmp2;
+
+	*ret = read(fd, tmp, BUFF_SIZE);
+	tmp[*ret] = '\0'
+	tmp2 = buf;
+	buf = ft_strjoin(buf, tmp);
+	ft_strdel(&tmp2);
+	return (buf);
+}
 
 int		get_next_line(int const fd, char **line)
 {
@@ -35,17 +48,4 @@ int		get_next_line(int const fd, char **line)
 		buf = biggerbuf(fd, buf, &ret);
 	}
 	return (ret);
-}
-
-char	*biggerbuf(int const fd, char *buf, int *ret)
-{
-	char	tmp[BUFF_SIZE + 1];
-	char	*tmp2;
-
-	*ret = read(fd, tmp, BUFF_SIZE);
-	tmp[*ret] = '\0';
-	tmp2 = buf;
-	buf = ft_strjoin(buf, tmp);
-	ft_strdel(&tmp2);
-	return (buf);
 }
