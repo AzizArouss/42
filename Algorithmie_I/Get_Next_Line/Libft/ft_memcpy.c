@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   memcpy.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/14 08:04:22 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/20 14:11:13 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/06 08:50:19 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/14 17:40:51 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE50
+#include "libft.h"
 
-int		get_next_line(int const fd, char **line);
+void	*ft_memcpy(void *s1, const void *s2, size_t n)
+{
+	size_t	i;
 
-#endif
+	i = 0;
+	while (i < n)
+	{
+		((unsigned char *)s1)[i] = ((unsigned char *)s2)[i];
+		i++;
+	}
+	return (s1);
+}

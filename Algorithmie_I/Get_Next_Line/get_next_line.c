@@ -5,37 +5,47 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/14 08:03:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 08:46:41 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/20 08:47:42 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/20 14:11:16 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
+#include "libft.h"
 
-	int		get_next_line(int const fd, char **line)
+int		get_next_line(int const fd, char **line)
 {
-	char  *str;
-	static  char  buffer[MEM_SIZE];
-	static  int   i = 0;
-	int   j;
-	static  int   k = 0;
+	static char		*buf = "";
+	int				ret;
+	char			*str;
 
-	j = 0;
-	str = malloc(MEM_SIZE * sizeof(char));
-	if (k == 0)
-		k = read(fd, buffer, MEM_SIZE);
-	if (i == k)
-		return (NULL);
-	while (i < k && buffer[i] != '\n')
+	if (!line || fd < 0)
+		return (-1);
+	ret = 1;
+	if (buf[0] == '\0')
+		buf = ft_strnew(0);
+	while (ret > 0)
 	{
-		str[j] = buffer[i];
-		i = i + 1;
-		j = j + 1;
+		if ((str = ft_strchr(buf, '\n')) != NULL)
+		{
+			*str = '\0';
+			*line = ft_strdup(buf);
+			ft_memmove(buf, str + 1, ft_strlen(str + 1) + 1);
+			return (1);
+		}
+		buf = biggerbuf(fd, buf, &ret);
 	}
-	if (buffer[i] == '\n')
-		i = i + 1;
-	str[j] = '\0';
-	return (str);
+	return (ret);
+}
+
+char	*biggerbuf(int const fd, char *buf, int *ret)
+{
+	char	tmp[BUFF_SIZE + 1];
+	char	*tmp2;
+
+	*ret = read(fd, tmp, BUFF_SIZE);
+	tmp[*ret] = '\0';
+	tmp2 = buf;
+	buf = ft_strjoin(buf, tmp);
+	ft_strdel(&tmp2);
+	return (buf);
 }
