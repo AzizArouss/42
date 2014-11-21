@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   isalpha.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 12:22:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/21 16:50:32 by aarouss          ###   ########.fr       */
+/*   Created: 2013/11/21 13:23:47 by gfernand          #+#    #+#             */
+/*   Updated: 2013/11/30 16:47:07 by gfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int	ft_islower(int c);
+int	ft_isupper(int c);
 
-# define BUFF_SIZE	50
-
-int			get_next_line(int const fd, char **line);
-
-#endif
+int	ft_isalpha(int c)
+{
+	return (ft_islower(c) || ft_isupper(c));
+}

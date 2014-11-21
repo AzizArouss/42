@@ -6,7 +6,7 @@
 /*   By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 14:14:51 by gfernand          #+#    #+#             */
-/*   Updated: 2013/12/09 15:52:58 by gfernand         ###   ########.fr       */
+/*   Updated: 2014/11/21 16:45:09 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 typedef struct s_list
 {
-	void	*content;
-	size_t	content_size;
-	struct	s_list *next;
-}				t_list;
+	void *content;
+	size_t content_size;
+	struct s_list *next;
+} t_list;
 
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);

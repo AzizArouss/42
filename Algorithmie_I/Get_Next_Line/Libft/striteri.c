@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   striteri.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 12:22:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/21 16:50:32 by aarouss          ###   ########.fr       */
+/*   Created: 2013/11/23 12:20:18 by gfernand          #+#    #+#             */
+/*   Updated: 2013/11/30 16:56:12 by gfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# define BUFF_SIZE	50
+void	ft_striteri(char *s, void (*f) (unsigned int, char *))
+{
+	unsigned int	i;
 
-int			get_next_line(int const fd, char **line);
-
-#endif
+	if (!f)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
+}

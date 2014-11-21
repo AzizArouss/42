@@ -3,94 +3,52 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
+#    By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/20 08:53:22 by aarouss          ###   ########.fr        #
+#    Created: 2013/11/20 18:18:59 by gfernand          #+#    #+#              #
+#    Updated: 2013/12/01 09:41:06 by gfernand         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
 NAME = libft.a
-FLAGS = -Wextra -Werror -Wall
-HEAD = libft.h
-OBJS = $(FILES:.c=.o);
-FILES = ft_isalpha.c \
-		ft_isdigit.c \
-		ft_isacii.c \
-		ft_isprint.c \
-		ft_isalnum.c \
-		ft_strcmp.c \
-		ft_strncmp.c \
-		ft_strequ.c \
-		ft_strnequ.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_memcmp.c \
-		ft_strdel.c \
-		ft_putchar.c \
-		ft_putchar_fd.c \
-		ft_putnbr.c \
-		ft_putnbr_fd.c \
-		ft_putendl.c \
-		ft_putendl_fd.c \
-		ft_putstr.c \
-		ft_putstr_fd.c \
-		ft_strdel.c \
-		ft_strclr.c \
-		ft_bzero.c \
-		ft_memdel.c \
-		ft_strdel.c \
-		ft_striter.c \
-		ft_striteri.c \
-		ft_memset.c \
-		ft_memcpy.c \
-		ft_memccpy.c \
-		ft_memchr.c \
-		ft_memmove.c \
-		ft_memalloc.c \
-		ft_strlen.c \
-		ft_strlcat.c \
-		ft_strcpy.c \
-		ft_strncpy.c \
-		ft_strmap.c \
-		ft_strmapi.c \
-		ft_strchr.c \
-		ft_strrchr.c \
-		ft_strstr.c \
-		ft_strnstr.c \
-		ft_strcat.c \
-		ft_strncat.c \
-		ft_strjoin.c \
-		ft_strdup.c \
-		ft_strnew.c \
-		ft_strsub.c \
-		ft_strtrim.c \
-		ft_atoi.c \
-		ft_itoa.c \
-		ft_lstadd.c \
-		ft_lstdel.c \
-		ft_lstdelone.c \
-		ft_lstiter.c \
-		ft_lstnew.c \
-		ft_lstmap.c \
-		ft_strsplit.c \
+CC = gcc -g -Wall -Wextra -Werror
+AR = ar -rsv
+
+SOURCES = bzero.c memcpy.c memccpy.c memchr.c memcmp.c memcpy.c memmove.c
+SOURCES += memset.c strcat.c strchr.c strcpy.c strdup.c strlcat.c strlen.c
+SOURCES += strncat.c strncpy.c strrchr.c strstr.c strnstr.c strcmp.c strncmp.c
+SOURCES += atoi.c islower.c isupper.c isalpha.c isdigit.c isalnum.c isascii.c
+SOURCES += tolower.c isprint.c toupper.c isspace.c memalloc.c memdel.c strnew.c
+SOURCES += strmap.c strmapi.c strclr.c strdel.c striter.c striteri.c strnequ.c
+SOURCES += strsub.c strjoin.c strtrim.c strsplit.c itoa.c putchar.c putstr.c
+SOURCES += putendl.c putnbr.c putchar_fd.c putstr_fd.c putendl_fd.c putnbr_fd.c
+SOURCES += strequ.c lstnew.c lstdelone.c lstdel.c lstadd.c lstiter.c lstmap.c
+SOURCES += putchar_error.c putstr_error.c
+
+OBJECTS = bzero.o memcpy.o memccpy.o memchr.o memcmp.o memcpy.o memmove.o
+OBJECTS += memset.o strcat.o strchr.o strcpy.o strdup.o strlcat.o strlen.o
+OBJECTS += strncat.o strncpy.o strrchr.o strstr.o strnstr.o strcmp.o strncmp.o
+OBJECTS += atoi.o islower.o isupper.o isalpha.o isdigit.o isalnum.o isascii.o
+OBJECTS += tolower.o isprint.o toupper.o isspace.o memalloc.o memdel.o strnew.o
+OBJECTS += strmap.o strmapi.o strclr.o strdel.o striter.o striteri.o strnequ.o
+OBJECTS += strsub.o strjoin.o strtrim.o strsplit.o itoa.o putchar.o putstr.o
+OBJECTS += putendl.o putnbr.o putchar_fd.o putstr_fd.o putendl_fd.o putnbr_fd.o
+OBJECTS += strequ.o lstnew.o lstdelone.o lstdel.o lstadd.o lstiter.o lstmap.o
+OBJECTS += putchar_error.o putstr_error.o 
+
+.PHONY = all clean fclean re;
+
+$(NAME): $(OBJECTS)
+	$(AR) $(NAME) $(OBJECTS)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
-
-%.o : %.c
-	$(CC) $(FLAGS) -c $^
+%.o: %.c
+	$(CC) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS)
-
+	rm -f $(OBJECTS)
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
 
-re: fclean all
-
-.PHONY: all, clean, fclean, re
+re: fclean $(NAME)

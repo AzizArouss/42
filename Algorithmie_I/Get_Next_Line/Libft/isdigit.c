@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   isdigit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 12:22:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/21 16:50:32 by aarouss          ###   ########.fr       */
+/*   Created: 2013/11/21 12:15:13 by gfernand          #+#    #+#             */
+/*   Updated: 2014/11/21 16:38:02 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# define BUFF_SIZE	50
-
-int			get_next_line(int const fd, char **line);
-
-#endif
+int	ft_isdigit(int c)
+{
+	return (c >= 48 && c <= 57);
+}

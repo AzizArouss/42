@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   isspace.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gfernand <gfernand@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 12:22:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/21 16:50:32 by aarouss          ###   ########.fr       */
+/*   Created: 2013/11/22 10:34:34 by gfernand          #+#    #+#             */
+/*   Updated: 2013/11/30 16:48:04 by gfernand         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# define BUFF_SIZE	50
-
-int			get_next_line(int const fd, char **line);
-
-#endif
+int	ft_isspace(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+			|| c == '\r')
+		return (1);
+	else
+		return (0);
+}
