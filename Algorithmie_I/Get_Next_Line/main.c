@@ -6,7 +6,7 @@
 /*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 22:10:06 by student@42        #+#    #+#             */
-/*   Updated: 2013/12/03 13:35:51 by qperez           ###   ########.fr       */
+/*   Updated: 2014/11/24 17:10:40 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
-#include <sys/wait.h>
+//include <sys/wait.h>
 
-int	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
 
-int	main(int argc, char ** argv)
+int		main(int argc, char **argv)
 {
 	int		fd;
 	int		fd2;
@@ -44,8 +44,8 @@ int	main(int argc, char ** argv)
 	while (get_next_line(fd, &line) == 1)
 	{
 		write(fd2, line, strlen(line));
-		write(fd2, &n, 1);					// attention si le fichier test n a pas de \n et que ca affiche une erreur c'est normal
-		free(line);							// vous inquietez pas
+		write(fd2, &n, 1);
+		free(line);
 	}
 	close(fd);
 	close(fd2);
@@ -59,7 +59,7 @@ int	main(int argc, char ** argv)
 		exit(0);
 	}
 	else
-		wait(NULL); // bad code I know ... but it's not the project
+		wait(NULL);
 	(void)argc;
 	(void)argv;
 	return (0);
