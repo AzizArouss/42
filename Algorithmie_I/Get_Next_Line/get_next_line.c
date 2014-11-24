@@ -6,12 +6,12 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/21 12:19:14 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/21 12:21:26 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/24 16:15:41 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft.h"
+#include "libft/includes/libft.h"
 #include <unistd.h>
 
 static char		*ft_charcat(char *s1, const char s2)

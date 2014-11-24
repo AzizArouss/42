@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/17 07:13:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:59:48 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/06 11:20:40 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/17 07:03:00 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (alst != NULL && new != NULL)
+	size_t			i;
+	unsigned char	*str;
+
+	str = (unsigned char *)s;
+	i = 0;
+	if (s && n > 0)
 	{
-		new->next = *alst;
-		*alst = new;
+		while (i < n)
+		{
+			if (str[i] == (unsigned char)c)
+				return ((void *)(str + i));
+			i++;
+		}
 	}
+	return (NULL);
 }

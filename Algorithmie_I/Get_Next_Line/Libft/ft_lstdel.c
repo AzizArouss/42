@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstel.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/21 12:22:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:46:08 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/17 07:24:04 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/24 14:58:25 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft/includes/libft.h"
 
-# define BUFF_SIZE 50
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+{
+	t_list	*next_lst;
+	t_list	*temp;
 
-int			get_next_line(int const fd, char **line);
-
-#endif
+	if (alst != NULL)
+	{
+		next_lst = *alst;
+		while (next_lst != NULL)
+		{
+			if (del != NULL)
+				(*del)(next_lst->content, (*next_lst).content_size);
+			temp = next_lst->next;
+			free(next_lst);
+			next_lst = temp;
+		}
+		*alst = NULL;
+	}
+}

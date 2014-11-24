@@ -1,22 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/17 07:13:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:59:48 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/05 09:01:11 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/24 14:44:59 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/includes/libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+char	*ft_strdup(const char *s1)
 {
-	if (alst != NULL && new != NULL)
+	char	*cpy;
+	int		i;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	if (!(cpy = (char *)malloc(sizeof(char *) * i)))
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		new->next = *alst;
-		*alst = new;
+		cpy[i] = s1[i];
+		i++;
 	}
+	return (cpy);
 }
