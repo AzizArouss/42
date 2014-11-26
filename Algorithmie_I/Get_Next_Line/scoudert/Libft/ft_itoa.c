@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/20 11:45:40 by scoudert          #+#    #+#             */
-/*   Updated: 2014/11/20 18:14:59 by scoudert         ###   ########.fr       */
+/*   Created: 2014/11/26 11:56:29 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/26 11:56:46 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char		*ft_fillstring(int n, char *s, int i)
 	while (result != 0)
 	{
 		result = n % divisor;
-		if (result< 0)
+		if (result < 0)
 			s[i] = (result * (-1)) + '0';
 		else
 			s[i] = result + '0';

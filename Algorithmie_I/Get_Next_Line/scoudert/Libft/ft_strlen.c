@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 15:35:36 by scoudert          #+#    #+#             */
-/*   Updated: 2014/11/18 15:35:11 by scoudert         ###   ########.fr       */
+/*   Updated: 2014/11/26 11:54:06 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t		ft_strlen(const char *str)
 {
-	size_t	 i;
+	size_t	i;
 
 	i = 0;
 	if (str)

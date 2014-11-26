@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/18 15:08:13 by scoudert          #+#    #+#             */
-/*   Updated: 2014/11/18 18:16:15 by scoudert         ###   ########.fr       */
+/*   Updated: 2014/11/26 11:55:35 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int		ft_countwords(const char *s, char c)
 {
-	int		i;
-	int counter;
+	int			i;
+	int			counter;
 
 	counter = 0;
 	i = 0;
