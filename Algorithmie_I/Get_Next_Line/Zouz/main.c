@@ -6,7 +6,7 @@
 /*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 22:10:06 by student@42        #+#    #+#             */
-/*   Updated: 2014/11/26 16:54:17 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/27 15:10:19 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <string.h>
-//include <sys/wait.h>
+/*include <sys/wait.h>*/
 
 int		get_next_line(int fd, char **line);
 

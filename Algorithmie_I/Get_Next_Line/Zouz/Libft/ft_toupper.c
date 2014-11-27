@@ -6,11 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 16:14:46 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:58:10 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/27 15:10:21 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 int		ft_toupper(int c)
 {
