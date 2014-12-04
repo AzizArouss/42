@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 16:54:12 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/04 16:59:29 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/04 17:21:37 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		get_refresh(char *buf, int i)
 	return (1);
 }
 
-static int		get_loop(int const fd, int *check, char **buf, 		char **line)
+static int		get_loop(int const fd, int *check, char **buf, char **line)
 {
 	int i;
 
