@@ -6,11 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 09:27:47 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:17:56 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/17 17:21:07 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 int		ft_atoi(const char *str)
 {

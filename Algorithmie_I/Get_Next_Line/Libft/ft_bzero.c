@@ -6,11 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 10:07:14 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:58:12 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/06 09:03:35 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
 {

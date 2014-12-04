@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isacii.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 17:22:46 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/06 16:19:08 by aarouss          ###   ########.fr       */
+/*   Created: 2014/12/04 16:10:03 by aarouss           #+#    #+#             */
+/*   Updated: 2014/12/04 16:55:55 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <unistd.h>
+# include <fcntl.h>
 
-int		ft_isascii(int c)
-{
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
-}
+# define BUFF_SIZE 100000000
+
+int		get_next_line(int const fd, char **line);
+
+#endif

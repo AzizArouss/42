@@ -6,9 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 17:23:51 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 08:28:30 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/05 18:26:34 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_isprint(int c)
 {

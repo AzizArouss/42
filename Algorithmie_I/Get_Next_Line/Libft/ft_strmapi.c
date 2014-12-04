@@ -6,11 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 17:52:33 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:48:25 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/18 16:46:14 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

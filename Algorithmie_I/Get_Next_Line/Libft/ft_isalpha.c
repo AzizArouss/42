@@ -6,11 +6,13 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 16:25:59 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:17:53 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/10 16:28:26 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 		return (1);

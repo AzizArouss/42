@@ -6,11 +6,11 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 08:35:43 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/24 14:44:43 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/11/05 17:20:51 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
+#include "libft.h"
 
 char	*ft_strcpy(char *s1, const char *s2)
 {
