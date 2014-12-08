@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/20 08:53:22 by aarouss          ###   ########.fr        #
+#    Updated: 2014/12/08 10:57:51 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,7 @@ $(NAME): $(OBJS)
 	ranlib $(NAME)
 
 %.o : %.c
-	$(CC) $(FLAGS) -c $^
+	$(CC) $(FLAGS) -I includes -c $^
 
 clean:
 	rm -rf $(OBJS)
