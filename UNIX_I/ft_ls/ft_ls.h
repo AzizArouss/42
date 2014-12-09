@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 11:10:00 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/08 17:37:25 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/09 17:28:17 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,64 +25,65 @@
 
 typedef struct		s_steve
 {
-	char			*file
-	char			
-	char			
-	struct s_steve	
-	char			
-	char			
-	char			
-	int				
-	int				
-	char			
-	time_t			
-	blkcnt_t		
-}					
-
-typedef struct		s_opts
+	char			*file;
+	char			*opt;
+	char			*path;
+	struct s_steve	*next;
+	char			*group;
+	char			*date;
+	char			*user;
+	int				link;
+	int				space;
+	char			*access;
+	time_t			time;
+	blkcnt_t		block;
+}					t_steve;
+;
+typedef struct		s_opts;
 {
-	int				
-	int				
-	int				
-	int				
-	int				
-}					
+	int				l;
+	int				gr;
+	int				a;
+	int				r;
+	int				t;
+	int				opt;
+}					t_opts;
 
 typedef struct		s_size
 {
-	int				
-	int				
-	int				
-	int				
-	int				
-}					
+	int				link;
+	int				uid;
+	int				guid;
+	int				space;
+	int				date;
+}					t_size;
 
-char				
-int					
-int					
-void				
-void				
+char				*ft_path_steve(char *path);
+int					ft_time(t_steve **list, t_steve *tmp2, t_ops *opts);
+int					ft_time2(t_steve **list, t_steve *tmp2, t_opts *opt);
+void				fs(t_steve **list, char *name, char *path, t_opts *opts);
+void				ft_find(char *path, t_steve **list, t_opts *opts, int rec);
 
-void				
-void				
-void				
-void				
-t_opts				
+void				ft_ls_access(t_steve *list, struct stat info);
+void				ft_ls_date(t_steve *list, struct stat info);
+void				ft_ls_l(t_steve *list);
+void				ft_ls_l2(t_steve *list);
+t_opts				*ft_init_opt(t_opts *opt);
 
-void				
-void				
-void				
+void				ft_opt_error(char *arg, t_opts *opt);
+void				ft_what_opt(char *arg, t_opts *opt);
+void				ft_ls_opt(char *arg, t_opts *opt, t_steeve *list);
 
-void				
-void				
-void				
-void				
-void				
+void				ft_add_space_endl(char *str);
+void				ft_add_space(int space, charr *info, int i);
+void				ft_init_space(t_steve *list, t_size **space);
+void				ft_add_ls_l(t_steve *list, t_opts *opt, t_size *space);
+void				ft_l(t_steve *list, t_opts *opt);
 
-void				
-void				
-void				
-void				
-void				
+void				ft_ls(t_steve *list, t_opts *opt);
+void				ft_add_rec(t_steve *list, t_opts *opt);
+void				ft_add_ls(t_steve *list, t_opts *opt);
+void				ft_add_r(t_steve **list, t_steve *opt);
+void				ft_r(t_steve **list, t_opts *opt);
 
 #endif
