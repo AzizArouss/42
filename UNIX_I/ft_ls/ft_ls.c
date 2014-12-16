@@ -6,12 +6,10 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/09 12:46:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/10 15:37:42 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/16 16:50:59 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//NOTE A MOI MEME : FT_LS.C NOT FINISHED
-//JE SAIS MON ANGLAIS EST PARFAIT, PAS LA PEINE DE FAIRE UN COMMENTAIRE DESSUS
 #include "ft_ls.h"
 
 char	*ft_path_steve(char *path)
@@ -76,3 +74,59 @@ int		ft_time(t_steve **list, t_steve *tmp2, t_opts *opt)
 	}
 	return (1);
 }
+
+void	ft_a(t_steve **list, char *name, char *path, t_opts *opt)
+{
+	t_steve		*file;
+	t_steve		*tmp;
+	struct stat	info;
+
+	file = (t_steve *)malloc(sizeof(t_steve));
+	file->file = ft_strdup(name);
+	path = ft_path_steve(path);
+	file->path = ft_strjoin(path, file->file);
+	stat(file->path, &info);
+	file->time = info.st_mtime;
+	ft_ls_access(file, info);
+	file->next = NULL;
+	if (*list == NULL)
+		*list = file;
+	else
+	{
+		if (ft_time(list, file, opt) == 1)
+		{
+			tmp = *list;
+			while (tmp->next != NULL)
+				tmp = tmp->next;
+			tmp->next = file;
+		}
+	}
+}
+
+void	ft_find(char *path, t_steve **list, t_opts *opt, int rec)
+{
+	DIR				*dir;
+	struct dirent	*entree;
+
+	if ((dir = opendir(path)) == NULL)
+	{
+		if (errmo = EACCES)
+		{
+			ft_permission(path);
+		}
+		else
+		{
+			ft_putstr_fd("ls: ", 2);
+			ft_putstr_fd(path, 2);
+			ft_putendl_fd(": No such file or directory", 2);
+			exit(1);
+		}
+	}
+	else
+	{
+		while ((entree = readdir(dir)) != 0)
+			ft_a(list, entree->d_name, path, opt);
+		closedir(dir);
+	}
+	if (rec == 0)
+		ft_add_ls(*list, opt);
