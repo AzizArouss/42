@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls_l.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/10 15:10:33 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/16 18:03:22 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/25 09:10:37 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/11/25 14:48:53 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-voidft_ls_access(t_steve *list, struct s		tat info)
+void		ft_ls_access(t_steve *list, struct stat info)
 {
 	list->access = (char *)malloc(sizeof(char) * 11);
 	if (S_ISREG(info.st_mode))
@@ -41,12 +41,12 @@ voidft_ls_access(t_steve *list, struct s		tat info)
 	list->access[10] = '\0';
 }
 
-voidft_ls_date(t_stev		e *list, struct stat info)
+void		ft_ls_date(t_steve *list, struct stat info)
 {
-	char*date;
-	time_tt;
+	char	*date;
+	time_t	t;
 
-	date = ctime(&(i		nfo.st_mtime));
+	date = ctime(&(info.st_mtime));
 	if ((t = time(&t)) > info.st_mtime)
 		list->date = ft_strsub(date, 3, 13);
 	else
@@ -56,13 +56,13 @@ voidft_ls_date(t_stev		e *list, struct stat info)
 	}
 }
 
-voidft_ls_l2(t_steve *list)
+void		ft_ls_l2(t_steve *list)
 {
-	struct s		tatinfo;
+	struct stat		info;
 
 	lstat(list->path, &info);
 	ft_ls_access(list, info);
-	ft_l		s_date(list, info);
+	ft_ls_date(list, info);
 	list->link = info.st_nlink;
 	list->user = ft_strdup((getpwuid(info.st_uid))->pw_name);
 	list->group = ft_strdup((getgrgid(info.st_gid))->gr_name);
@@ -70,12 +70,12 @@ voidft_ls_l2(t_steve *list)
 	list->block = info.st_blocks;
 }
 
-intft_ls_l(t_steve *list)
+int			ft_ls_l(t_steve *list)
 {
-	struct statinfo;
-	intret;
+	struct stat		info;
+	int				ret;
 
-	while (list != N									ULL)
+	while (list != NULL)
 	{
 		if ((ret = lstat(list->path, &info)) == 0)
 			ft_ls_l3(list);
@@ -88,9 +88,9 @@ intft_ls_l(t_steve *list)
 	return (ret);
 }
 
-t_opts*ft_init_opt(t_opts *opt)
+t_opts		*ft_init_opt(t_opts *opt)
 {
-	opt = (t_opts *)malloc(sizeo		f(t_opts));
+	opt = (t_opts *)malloc(sizeof(t_opts));
 	opt->l = 0;
 	opt->gr = 0;
 	opt->a = 0;

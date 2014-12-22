@@ -1,25 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2014/12/08 10:43:30 by aarouss           #+#    #+#              #
-#    Updated: 2014/12/15 18:20:45 by aarouss          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = ft_ls
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-INCLUDES =
-SRC = ft_ls.c \
-	  ft_ls_l.c \
-	  ft_option.c \
-	  ft_add.c \
-	  ft_space.c \
-	  main.c \
+CFLAGS = -Wall -Wextra -Werror
+INCLUDE = 
+SRC = ft_ls.c 				\
+	ft_ls_l.c  				\
+	ft_option.c				\
+	ft_add.c 				\
+	ft_space.c 				\
+	main.c					\
+	ft_minifct.c	 
 
 OBJ = $(SRC:.c=.o)
 
@@ -37,6 +26,7 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re : fcleanall
+re: fclean all
 
-.PHONY : all, fclean, clean, re
+.PHONY: all, fclean, clean, re 
+

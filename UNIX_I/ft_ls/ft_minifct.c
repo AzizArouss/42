@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minifct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/16 11:19:17 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/16 18:04:56 by aarouss          ###   ########.fr       */
+/*   Created: 2014/12/10 09:53:25 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/10 09:53:26 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_permission(char *path)
 	ft_putendl_fd(": Permission denied", 2);
 }
 
-void	ft_ls_13(t_steve *list)
+void	ft_ls_l3(t_steve *list)
 {
 	struct stat		info;
 	struct passwd	*tmp;
@@ -44,9 +44,9 @@ void	ft_ls_13(t_steve *list)
 		list->user = ft_strdup(ft_itoa((int)info.st_uid));
 	else
 		list->user = ft_strdup(tmp->pw_name);
-	tmp2 = getgrgrid(info.st_grid);
+	tmp2 = getgrgid(info.st_gid);
 	if (tmp2 == NULL)
-		list->group = ft_strdup(ft_itoa((int)info.st_uid));
+		list->group = ft_strdup(ft_itoa((int)info.st_gid));
 	else
 		list->group = ft_strdup(tmp2->gr_name);
 	list->space = info.st_size;
@@ -62,8 +62,18 @@ void	ft_readlink(t_steve *list)
 
 	if ((len = readlink(list->file, buf, 1023)) != -1)
 	{
-		buf[len] = '\0'
+		buf[len] = '\0';
 		list->file = ft_strjoin(list->file, " -> ");
 		list->file = ft_strjoin(list->file, buf);
 	}
+}
+
+void	ft_init_struct_space(t_size **space)
+{
+	(*space) = (t_size *)malloc(sizeof(t_size));
+	(*space)->link = 0;
+	(*space)->uid = 0;
+	(*space)->guid = 0;
+	(*space)->space = 0;
+	(*space)->date = 0;
 }

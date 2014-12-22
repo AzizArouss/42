@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/09 12:46:54 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/17 17:11:20 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/25 09:10:28 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/02 04:00:36 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ char	*ft_path_steve(char *path)
 
 int		ft_time2(t_steve **list, t_steve *tmp2, t_opts *opt)
 {
-	t_steve		*tmp;
+	t_steve	*tmp;
 
 	tmp = *list;
 	if (tmp == NULL)
 	{
 		*list = tmp2;
-		return(0);
+		return (0);
 	}
 	else if ((opt->t == 1 && (tmp2->time > tmp->time
 				|| (tmp2->time == tmp->time
@@ -49,7 +49,7 @@ int		ft_time2(t_steve **list, t_steve *tmp2, t_opts *opt)
 		*list = tmp2;
 		return (0);
 	}
-	return(1);
+	return (1);
 }
 
 int		ft_time(t_steve **list, t_steve *tmp2, t_opts *opt)
@@ -62,7 +62,7 @@ int		ft_time(t_steve **list, t_steve *tmp2, t_opts *opt)
 	while (tmp->next != NULL)
 	{
 		if ((opt->t == 1 && (tmp2->time > tmp->next->time
-			|| (tmp2->time == time->next->time
+			|| (tmp2->time == tmp->next->time
 			&& ft_strcmp(tmp2->file, tmp->next->file) < 0)))
 			|| (opt->t == 0 && ft_strcmp(tmp2->file, tmp->next->file) < 0))
 		{
@@ -110,7 +110,7 @@ void	ft_find(char *path, t_steve **list, t_opts *opt, int rec)
 
 	if ((dir = opendir(path)) == NULL)
 	{
-		if (errmo = EACCES)
+		if (errno == EACCES)
 		{
 			ft_permission(path);
 		}
@@ -130,3 +130,4 @@ void	ft_find(char *path, t_steve **list, t_opts *opt, int rec)
 	}
 	if (rec == 0)
 		ft_add_ls(*list, opt);
+}

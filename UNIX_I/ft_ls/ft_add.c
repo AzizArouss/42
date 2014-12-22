@@ -3,26 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/09 12:17:32 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/09 17:28:19 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/25 09:23:28 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/02 04:44:23 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	ft_lst(t_steve *list, t_opts *opt)
+void	ft_ls(t_steve *list, t_opts *opt)
 {
 	while (list != NULL)
 	{
-		if (opt->a == 0 && list->file[0] != '-')
+		if (opt->a == 0 && list->file[0] != '.')
 			ft_putendl(list->file);
 		else if (opt->a)
 			ft_putendl(list->file);
 		list = list->next;
 	}
-	free(list);
 }
 
 void	ft_add_gr(t_steve *list, t_opts *opt)
@@ -34,10 +33,10 @@ void	ft_add_gr(t_steve *list, t_opts *opt)
 	while (list != NULL)
 	{
 		tmp = NULL;
-		if (opt->l == 0)
+		if (opt->l == 1)
 			ft_ls_l(list);
 		if (list->access[0] == 'd' && ft_strcmp(list->file, ".") != 0
-			&& ft_strcmp(list->file, "..") ! = 0)
+			&& ft_strcmp(list->file, "..") != 0)
 		{
 			ft_putchar('\n');
 			ft_putstr(list->path);
@@ -84,4 +83,3 @@ void	ft_r(t_steve **list, t_opts *opt)
 		ft_add_r(list, normal);
 	}
 }
-
