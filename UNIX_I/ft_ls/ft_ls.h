@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 11:38:44 by ade-bonn          #+#    #+#             */
-/*   Updated: 2014/12/10 12:09:13 by ade-bonn         ###   ########.fr       */
+/*   Created: 2014/11/25 11:38:44 by aarouss           #+#    #+#             */
+/*   Updated: 2014/12/23 08:12:31 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <time.h>
 # include <grp.h>
 # include <sys/types.h>
-# include "libft/libft.h"
+# include "libft/includes/libft.h"
 # include <errno.h>
 
 typedef struct		s_steve

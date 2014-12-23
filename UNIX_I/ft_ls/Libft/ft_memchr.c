@@ -1,41 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 09:29:57 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:53:18 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/06 11:20:40 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/17 07:03:00 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
-#include "ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int			i;
-	t_opts		*opt;
-	t_steve		*list;
-	int			rec;
+	size_t			i;
+	unsigned char	*str;
 
-	list = NULL;
-	opt = NULL;
-	opt = ft_init_opt(opt);
-	rec = 0;
-	i = 1;
-	if (ac == 1 || (ac == 2 && (ft_strcmp(av[1], "--") == 0)))
-		ft_find("./", &list, opt, rec);
-	else
+	str = (unsigned char *)s;
+	i = 0;
+	if (s && n > 0)
 	{
-		while (i < ac)
+		while (i < n)
 		{
-			ft_ls_opt(av[i], opt, list);
+			if (str[i] == (unsigned char)c)
+				return ((void *)(str + i));
 			i++;
 		}
 	}
-	if (opt->opt == 0 && ac != 1)
-		ft_find("./", &list, opt, rec);
-	return (0);
+	return (NULL);
 }

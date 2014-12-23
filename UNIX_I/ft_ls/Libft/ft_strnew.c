@@ -1,41 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 09:29:57 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:53:18 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/07 15:34:20 by aarouss           #+#    #+#             */
+/*   Updated: 2014/11/07 15:52:26 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/includes/libft.h"
-#include "ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strnew(size_t size)
 {
-	int			i;
-	t_opts		*opt;
-	t_steve		*list;
-	int			rec;
+	char	*str;
+	size_t	i;
 
-	list = NULL;
-	opt = NULL;
-	opt = ft_init_opt(opt);
-	rec = 0;
-	i = 1;
-	if (ac == 1 || (ac == 2 && (ft_strcmp(av[1], "--") == 0)))
-		ft_find("./", &list, opt, rec);
-	else
+	str = (char *)malloc(sizeof(char) * (size + 1));
+	if (str)
 	{
-		while (i < ac)
+		i = 0;
+		while (i <= size)
 		{
-			ft_ls_opt(av[i], opt, list);
+			str[i] = '\0';
 			i++;
 		}
 	}
-	if (opt->opt == 0 && ac != 1)
-		ft_find("./", &list, opt, rec);
-	return (0);
+	return (str);
 }
