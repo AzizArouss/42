@@ -6,13 +6,13 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 09:29:12 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/18 15:22:19 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/30 14:16:05 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-size_t	ft_strlen(const char *s)
+int		ft_strlen(const char *s)
 {
 	size_t	i;
 
