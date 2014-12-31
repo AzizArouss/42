@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 17:50:14 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/31 13:46:59 by scoudert         ###   ########.fr       */
+/*   Updated: 2014/12/31 14:41:00 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ char			**ft_strsplit(char const *s, char c)
 	size_t	length;
 	char	**split;
 
-	if (s == NULL || s[0] == '\0')
-		return (NULL);
-	if (c)
+	if (c && s && s[0] != '\0')
 	{
 		i = 0;
 		while (s[i] == c && s[i] != '\0')
