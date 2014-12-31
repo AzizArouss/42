@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 16:54:12 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/19 12:09:16 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/31 15:06:25 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int				get_next_line(int const fd, char **line)
 	static int		check;
 	int				i;
 
-	if (fd < 0 || fd >= 99 || (fd == 1 && line == NULL))
+	if (fd < 0 || line == NULL)
 		return (-1);
 	*line = NULL;
 	if (!check)
@@ -72,6 +72,8 @@ int				get_next_line(int const fd, char **line)
 		if (!(buf = (char*)malloc(sizeof(char) * (BUFF_SIZE + 1))))
 			return (-1);
 		check = read(fd, buf, BUFF_SIZE);
+		if (check == -1)
+			return (check);
 		buf[check] = 0;
 	}
 	i = get_loop(fd, &check, &buf, line);
