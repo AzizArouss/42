@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 10:54:13 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/08 15:34:24 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/31 11:37:38 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 
 	j = 0;
 	i = 0;
-	if (s2[0] == '\0' || s2 == NULL)
+	if (s2 == NULL || s2[0] == '\0')
 		return ((char *)s1);
 	while (s1[i])
 	{
@@ -27,7 +27,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 			j++;
 		else
 			j = 0;
-		if (!s2[j])
+		if (s2[j] == '\0')
 			return ((char *)s1 + (i - (j - 1)));
 		i++;
 	}

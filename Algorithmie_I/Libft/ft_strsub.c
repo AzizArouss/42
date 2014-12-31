@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 11:51:10 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 15:03:36 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/31 14:36:44 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,20 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	if (s == NULL || len <= 0)
-		return (NULL);
-	tmp = NULL;
-	tmp = ft_strnew(len);
-	if (tmp == NULL)
-		return (NULL);
-	while (i < len)
+	if (s != NULL || s[0] != '\0' || start > len || s[start + len])
 	{
-		tmp[i] = s[start];
-		start++;
-		i++;
+		tmp = NULL;
+		tmp = ft_strnew(len + 1);
+		tmp[len] = '\0';
+		if (tmp == NULL)
+			return (NULL);
+		while (i != len && s[start])
+		{
+			tmp[i] = s[start];
+			start++;
+			i++;
+		}
+		return (tmp);
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	return (NULL);
 }

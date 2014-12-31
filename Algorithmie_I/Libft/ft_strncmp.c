@@ -6,7 +6,7 @@
 /*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 09:46:20 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 18:17:34 by aarouss          ###   ########.fr       */
+/*   Updated: 2014/12/31 11:06:32 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 		return (0);
 	while ((s1[i] || s2[i]) && (i < n))
 	{
-		if (s1[i] < s2[i])
-			return (-1);
 		if (s1[i] > s2[i])
+			return (-1);
+		if (s1[i] < s2[i])
 			return (1);
 		i++;
 	}

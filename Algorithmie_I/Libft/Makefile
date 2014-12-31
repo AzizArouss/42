@@ -6,13 +6,13 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/20 08:53:22 by aarouss          ###   ########.fr        #
+#    Updated: 2014/12/31 14:37:17 by scoudert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -Wextra -Werror -Wall -g
 HEAD = libft.h
 OBJS = $(FILES:.c=.o);
 FILES = ft_isalpha.c \
@@ -79,17 +79,17 @@ FILES = ft_isalpha.c \
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
 
 %.o : %.c
-	$(CC) $(FLAGS) -c $^
+	@$(CC) $(FLAGS) -c $^
 
 clean:
-	rm -rf $(OBJS)
+	@rm -rf $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
