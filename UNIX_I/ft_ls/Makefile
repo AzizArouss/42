@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/23 07:19:30 by aarouss           #+#    #+#              #
-#    Updated: 2014/12/30 15:29:38 by aarouss          ###   ########.fr        #
+#    Updated: 2014/12/31 10:40:06 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ all : $(NAME)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME):
+	make -C libft
 	$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L libft -lft
 
 clean:
