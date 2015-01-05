@@ -6,13 +6,13 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/11/20 08:53:22 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/05 09:01:51 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -Wextra -Werror -Wall -g
 HEAD = libft.h
 OBJS = $(FILES:.c=.o);
 FILES = ft_isalpha.c \
