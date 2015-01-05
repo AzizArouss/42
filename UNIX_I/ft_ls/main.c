@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 09:29:57 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:53:18 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/05 15:40:47 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/05 15:40:56 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ int		main(int ac, char **av)
 	int			i;
 	t_opts		*opt;
 	t_steve		*list;
-	int			rec;
 
 	list = NULL;
 	opt = NULL;
 	opt = ft_init_opt(opt);
-	rec = 0;
 	i = 1;
 	if (ac == 1 || (ac == 2 && (ft_strcmp(av[1], "--") == 0)))
-		ft_find("./", &list, opt, rec);
+		ft_find("./", &list, opt, 0);
 	else
 	{
 		while (i < ac)
@@ -36,6 +34,6 @@ int		main(int ac, char **av)
 		}
 	}
 	if (opt->opt == 0 && ac != 1)
-		ft_find("./", &list, opt, rec);
+		ft_find("./", &list, opt, 0);
 	return (0);
 }

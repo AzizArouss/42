@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 09:23:28 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:20:30 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/25 09:23:28 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/02 04:44:23 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_add_gr(t_steve *list, t_opts *opt)
 	while (list != NULL)
 	{
 		tmp = NULL;
-		if (opt->l == 1)
+		if (opt->l == 0)
 			ft_ls_l(list);
 		if (list->access[0] == 'd' && ft_strcmp(list->file, ".") != 0
 			&& ft_strcmp(list->file, "..") != 0)

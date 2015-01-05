@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 09:10:28 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:21:01 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/25 09:10:28 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/02 04:00:36 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,15 +111,12 @@ void	ft_find(char *path, t_steve **list, t_opts *opt, int rec)
 	if ((dir = opendir(path)) == NULL)
 	{
 		if (errno == EACCES)
-		{
 			ft_permission(path);
-		}
 		else
 		{
 			ft_putstr_fd("ls: ", 2);
 			ft_putstr_fd(path, 2);
 			ft_putendl_fd(": No such file or directory", 2);
-			exit(1);
 		}
 	}
 	else

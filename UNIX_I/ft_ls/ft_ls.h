@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/25 11:38:44 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/24 11:44:34 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/05 15:41:21 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/05 15:41:38 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ t_opts				*ft_init_opt(t_opts *opt);
 void				ft_opt_error(char *arg, t_opts *opt);
 void				ft_what_opt(char *arg, t_opts *opt);
 void				ft_ls_opt(char *arg, t_opts *opt, t_steve *list);
-void				ft_steve(t_steve *list, t_size **space);
 
 void				ft_add_space_endl(char *str);
 void				ft_add_space(int space, char *info, int i);
@@ -95,5 +94,5 @@ void				ft_denied(t_steve *list);
 void				ft_ls_l3(t_steve *list);
 void				ft_readlink(t_steve *list);
 void				ft_permission(char *path);
-void				ft_init_struct_space(t_size **space);
+
 #endif

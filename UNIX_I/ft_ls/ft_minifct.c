@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_minifct.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/10 09:53:25 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/23 07:21:53 by aarouss          ###   ########.fr       */
+/*   Created: 2014/12/10 09:53:25 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/12/10 09:53:26 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,4 @@ void	ft_readlink(t_steve *list)
 		list->file = ft_strjoin(list->file, " -> ");
 		list->file = ft_strjoin(list->file, buf);
 	}
-}
-
-void	ft_init_struct_space(t_size **space)
-{
-	(*space) = (t_size *)malloc(sizeof(t_size));
-	(*space)->link = 0;
-	(*space)->uid = 0;
-	(*space)->guid = 0;
-	(*space)->space = 0;
-	(*space)->date = 0;
 }
