@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 08:50:19 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 17:40:51 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:20:44 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:34 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memcpy(void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	char	*c1;
+	char	*c2;
 
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s1)[i] = ((unsigned char *)s2)[i];
-		i++;
-	}
+	if (n == 0 || s1 == s2)
+		return (s1);
+	c1 = (char *)s1;
+	c2 = (char *)s2;
+	while (--n)
+		*c1++ = *c2++;
+	*c1 = *c2;
 	return (s1);
 }

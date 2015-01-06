@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 17:39:46 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/14 07:51:39 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:22:15 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:48 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,21 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	int		length;
-	int		i;
-	char	*out;
+	char	*dst;
+	char	*tmp_dst;
 
-	out = NULL;
-	if (s)
+	if (s == NULL)
+		return (NULL);
+	dst = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (dst == NULL)
+		return (NULL);
+	tmp_dst = dst;
+	while (*s != '\0')
 	{
-		length = ft_strlen(s);
-		i = 0;
-		out = (char *)malloc(sizeof(char) * (length + 1));
-		if (out)
-		{
-			while (i < length)
-			{
-				out[i] = f(s[i]);
-				i++;
-			}
-			out[i] = '\0';
-		}
+		*tmp_dst = (*f)(*s);
+		tmp_dst++;
+		s++;
 	}
-	return (out);
+	*tmp_dst = '\0';
+	return (dst);
 }

@@ -3,35 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 16:05:26 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/17 08:15:34 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:20:23 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:20 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char *ft_itoa(int n)
+static int	ft_n_count(int n, int i)
 {
-	char	*ret;
-	int		temp_n;
-	size_t	size_ret;
-	char	sign;
+	while (n > 9 || n < 0)
+	{
+		i++;
+		n /= 10;
+	}
+	return (i);
+}
 
-	sign = (n < 0) ? -1 : 1;
-	size_ret = 2 + (n < 0);
-	temp_n = n;
-	while ((n = n / 10))
-		size_ret++;
-	n = temp_n;
-	if ((ret = (char *)malloc(sizeof(char) * size_ret--)) == NULL)
-		return (NULL);
-	ret[size_ret--] = '\0';
-	ret[size_ret--] = sign * (n % 10) + '0';
-	while ((n = n / 10))
-		ret[size_ret--] = sign * (n % 10) + '0';
-	if (sign < 0)
-		ret[size_ret] = '-';
-	return (ret);
+char		*ft_itoa(int n)
+{
+	int		len;
+	int		nbr;
+	char	*str2;
+	int		i;
+	char	*str;
+
+	len = (n < 0) ? 2 : 1;
+	nbr = n;
+	i = ft_n_count(n, len);
+	str2 = ft_strnew(i + 1);
+	while (i > 0)
+	{
+		if (n >= 0)
+			str2[i - 1] = ((char)((nbr % 10) + 48));
+		if (n < 0 && i >= 2)
+			str2[i - 2] = ((char)(48 - (nbr % 10)));
+		i--;
+		nbr /= 10;
+	}
+	if (n < 0)
+		str2[i] = '-';
+	str = ft_strnew(ft_n_count(n, len) + 1);
+	ft_strcpy(str, str2);
+	free(str2);
+	return (str);
 }

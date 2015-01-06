@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 12:41:19 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/06 13:04:02 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:12:03 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:05 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,26 @@
 
 int	ft_atoi(const char *str)
 {
-	int		nb;
-	int		i;
-	int		sign;
+	int sign;
+	int nbr;
 
-	nb = 0;
-	i = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\n' || str[i] == '\v' || str[i] == '\t'
-			|| str[i] == '\r' || str[i] == '\f')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	nbr = 0;
+	while (*str == ' ' || *str == '\n' || *str == '\v'
+			|| *str == '\t' || *str == '\r' || *str == '\f')
+		++str;
+	if (*str == '-')
 	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
+		sign = -1;
+		++str;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	else if (*str == '+')
+		++str;
+	while (*str >= '0' && *str <= '9')
 	{
-		nb = nb * 10;
-		nb = nb + str[i] - 48;
-		i++;
+		nbr = nbr * 10;
+		nbr = nbr + (*str - '0');
+		++str;
 	}
-	return (nb * sign);
+	return (sign * nbr);
 }

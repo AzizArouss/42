@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 12:32:01 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/06 13:45:13 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:22:54 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:51 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,26 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*tmp;
+	size_t	lenght;
+	char	*str;
 	size_t	i;
 
-	i = 0;
-	if (s == NULL || len <= 0)
-		return (NULL);
-	tmp = NULL;
-	tmp = ft_strnew(len);
-	if (tmp == NULL)
-		return (NULL);
-	while (i < len)
+	str = NULL;
+	if (s)
 	{
-		tmp[i] = s[start];
-		start++;
-		i++;
+		lenght = (s != NULL) ? ft_strlen(s) : 0;
+		if (lenght < (start + len))
+			return (NULL);
+		i = 0;
+		str = ft_strnew(lenght - start + 1);
+		if (!str)
+			return (NULL);
+		while (s[start + i] != '\0' && i < len)
+		{
+			str[i] = s[start + i];
+			i++;
+		}
+		str[i] = '\0';
 	}
-	tmp[i] = '\0';
-	return (tmp);
+	return (str);
 }

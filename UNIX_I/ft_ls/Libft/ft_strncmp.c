@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 09:46:20 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/31 11:06:32 by scoudert         ###   ########.fr       */
+/*   Created: 2015/01/06 16:22:21 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:49 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	unsigned int	len1;
+	unsigned int	len2;
 
-	i = 0;
-	if (!s1 && !s2)
+	if (s1 == NULL && s2 == NULL)
 		return (0);
-	while ((s1[i] || s2[i]) && (i < n))
-	{
-		if (s1[i] > s2[i])
-			return (-1);
-		if (s1[i] < s2[i])
-			return (1);
-		i++;
-	}
-	return (0);
+	if (s1 == NULL)
+		return (-1);
+	if (s2 == NULL)
+		return (1);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (n > len1)
+		n = len1 + 1;
+	if (n > len2)
+		n = len2 + 1;
+	return (ft_memcmp(s1, s2, n));
 }

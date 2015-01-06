@@ -3,16 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 11:53:49 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/07 12:29:01 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:20:59 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:37 by aarouss          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/11/06 10:08:45 by ade-bonn          #+#    #+#             */
+/*   Updated: 2014/11/06 10:08:47 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int		ft_putchar_fd(int c, int fd)
 {
-	write(fd, &c, 1);
+	unsigned char	chr;
+
+	chr = (unsigned char)c;
+	return (write(fd, &chr, 1));
 }

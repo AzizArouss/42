@@ -5,75 +5,68 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 12:34:12 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/06 12:47:45 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:22:49 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:51 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static int		count_str(char const *s, char c)
+size_t	ft_words_len(char const *s, char c)
 {
-	int		i;
-	int		k;
+	size_t	size;
 
-	i = 0;
-	k = 0;
-	while (s[i] != '\0')
+	size = 0;
+	while (*s != '\0' && *s != c)
 	{
-		if (s[i] != c && (s[i - 1] == c || i == 0))
-			k++;
-		i++;
+		s++;
+		size++;
 	}
-	return (k);
+	return (size);
 }
 
-static char		*write_str(char const *s, char c, int *lgt, char *str)
+size_t	ft_nbr_words(char const *s, char c)
 {
-	int		a;
-	int		b;
-
-	b = 0;
-	while (s[(*lgt)] == c && s[(*lgt)])
-		*lgt = *lgt + 1;
-	while (s[b + *lgt] != c && s[*lgt + b])
-		b++;
-	str = ft_strnew(b + 1);
-	if (!str)
-		return (0);
-	a = 0;
-	while (s[(*lgt)] != c && s[(*lgt)])
-	{
-		str[a] = s[(*lgt)];
-		*lgt = *lgt + 1;
-		a++;
-	}
-	str[a] = 0;
-	return (str);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**tab;
-	int		i;
-	int		j;
-	int		k;
+	int	i;
+	int	nbr;
 
 	i = 0;
-	j = 0;
-	tab = 0;
-	if (s)
+	nbr = 0;
+	while (s[i])
 	{
-		k = count_str(s, c);
-		tab = malloc(sizeof(*tab) * (k + 1));
+		while (s[i] && s[i] == c)
+			i++;
+		while (s[i] && s[i] != c)
+			i++;
+		if (s[i] != '\0' || s[i - 1] != c)
+			nbr++;
 	}
-	if (!tab)
-		return (0);
-	while (i < k)
+	return (nbr);
+}
+
+char	**ft_strsplit(char const *s, char c)
+{
+	char		**str;
+	size_t		i;
+	size_t		j;
+	size_t		len;
+
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	len = ft_nbr_words(s, c);
+	str = (char **)malloc(sizeof(char *) * len + 1);
+	while (i < len)
 	{
-		tab[i] = write_str(s, c, &j, tab[i]);
+		j = 0;
+		while (*s && *s == c)
+			s = s + 1;
+		while (*(s + j) && *(s + j) != c)
+			j++;
+		*(str++) = ft_strsub(s, 0, j);
+		s = s + j;
 		i++;
 	}
-	tab[i] = 0;
-	return (tab);
+	*str = NULL;
+	return (str - len);
 }

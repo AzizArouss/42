@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 15:12:09 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/17 07:00:15 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:22:56 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:52 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,21 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char	*newstr;
-	int		len;
-	int		start;
+	int len_space;
+	int len;
+	int	i;
 
 	if (!s)
 		return (NULL);
-	start = 0;
-	while (*s == '\n' || *s == ' ' || *s == '\t')
-		s++;
-	len = ft_strlen(s);
-	newstr = ft_strnew(len - start);
-	if (newstr == NULL)
-		return (NULL);
-	newstr = ft_strcpy(newstr, s);
-	while (len-- >= 0)
+	len = ft_strlen(s) - 1;
+	len_space = 0;
+	i = 0;
+	while (s[i] && ft_isspace(s[i]))
 	{
-		if (s[len] == '\n' || s[len] == ' ' || s[len] == '\t')
-			newstr[len] = 0;
-		else
-			break ;
+		len_space++;
+		i++;
 	}
-	return (newstr);
+	while (len >= 0 && ft_isspace(s[len]))
+		len--;
+	return (ft_strsub(s, i, len - len_space + 1));
 }

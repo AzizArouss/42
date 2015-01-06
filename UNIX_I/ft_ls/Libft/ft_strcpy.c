@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 08:35:43 by aarouss           #+#    #+#             */
-/*   Updated: 2014/11/05 17:20:51 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 16:21:52 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 16:24:45 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strcpy(char *s1, const char *s2)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (s2[i] != '\0')
