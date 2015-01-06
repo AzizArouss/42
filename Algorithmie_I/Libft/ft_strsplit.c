@@ -3,60 +3,77 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 17:50:14 by aarouss           #+#    #+#             */
-/*   Updated: 2014/12/31 14:41:00 by scoudert         ###   ########.fr       */
+/*   Created: 2015/01/06 12:34:12 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 12:47:45 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_count_split(char const *s, char c)
+static int		count_str(char const *s, char c)
 {
-	size_t	split_count;
-	size_t	i;
+	int		i;
+	int		k;
 
-	split_count = 0;
 	i = 0;
-	while (s[i] == c && s[i] != '\0')
-		i++;
+	k = 0;
 	while (s[i] != '\0')
 	{
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		split_count++;
-		while (s[i] == c && s[i] != '\0')
-			i++;
+		if (s[i] != c && (s[i - 1] == c || i == 0))
+			k++;
+		i++;
 	}
-	return (split_count);
+	return (k);
+}
+
+static char		*write_str(char const *s, char c, int *lgt, char *str)
+{
+	int		a;
+	int		b;
+
+	b = 0;
+	while (s[(*lgt)] == c && s[(*lgt)])
+		*lgt = *lgt + 1;
+	while (s[b + *lgt] != c && s[*lgt + b])
+		b++;
+	str = ft_strnew(b + 1);
+	if (!str)
+		return (0);
+	a = 0;
+	while (s[(*lgt)] != c && s[(*lgt)])
+	{
+		str[a] = s[(*lgt)];
+		*lgt = *lgt + 1;
+		a++;
+	}
+	str[a] = 0;
+	return (str);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	size_t	split_i;
-	size_t	i;
-	size_t	length;
-	char	**split;
+	char	**tab;
+	int		i;
+	int		j;
+	int		k;
 
-	if (c && s && s[0] != '\0')
+	i = 0;
+	j = 0;
+	tab = 0;
+	if (s)
 	{
-		i = 0;
-		while (s[i] == c && s[i] != '\0')
-			i++;
-		split = (char**)ft_memalloc(sizeof(char*) * (1 + ft_count_split(s, c)));
-		split_i = 0;
-		while (s[i] != '\0')
-		{
-			length = 0;
-			while (s[i + length] != c && s[i + length] != '\0')
-				length++;
-			split[split_i++] = ft_strsub(s, i, length);
-			i += length;
-			while (s[i] == c && s[i] != '\0')
-				i++;
-		}
-		return (split);
+		k = count_str(s, c);
+		tab = malloc(sizeof(*tab) * (k + 1));
 	}
-	return (NULL);
+	if (!tab)
+		return (0);
+	while (i < k)
+	{
+		tab[i] = write_str(s, c, &j, tab[i]);
+		i++;
+	}
+	tab[i] = 0;
+	return (tab);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 22:10:06 by student@42        #+#    #+#             */
-/*   Updated: 2015/01/05 14:43:57 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/06 12:59:24 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/06 13:00:29 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(int argc, char **argv)
 	int		fd2;
 	char	*line;
 	pid_t	child;
-	char	n = '\n';
+	charn = '\n';
 
 	if (argc < 2)
 	{
@@ -52,7 +52,7 @@ int		main(int argc, char **argv)
 	child = fork();
 	if (child == 0)
 	{
-		char	*arg[] = {"/usr/bin/diff", NULL, "me.txt", NULL};
+		char*arg[] = {"/usr/bin/diff", NULL, "me.txt", NULL};
 
 		arg[1] = argv[1];
 		execve(arg[0], arg, NULL);

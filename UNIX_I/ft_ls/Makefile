@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/12/23 07:19:30 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/05 15:01:09 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/06 12:20:59 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ all : $(NAME)
 $(NAME):
 	@make -C libft/ re
 	@echo "\033[1;34mCompile all \".o\"\033[0m"
-	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L libft -lft
+	@$(CC) $(CFLAGS) -o $(NAME) $(SRC) -L libft/ -lft
 
 clean:
 	@echo "\033[1;34mDelete all \".o\"\033[0m"

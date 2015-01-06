@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2014/12/31 16:12:33 by scoudert         ###   ########.fr        #
+#    Updated: 2015/01/06 13:06:14 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ HEAD = libft.h
 OBJS = $(FILES:.c=.o);
 FILES = ft_isalpha.c \
 		ft_isdigit.c \
-		ft_isacii.c \
+		ft_isascii.c \
 		ft_isprint.c \
 		ft_isalnum.c \
 		ft_strcmp.c \
@@ -81,7 +81,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\033[01;35mCreate libft.a\033[0m"
 
 %.o : %.c
 	@$(CC) $(FLAGS) -c $^
