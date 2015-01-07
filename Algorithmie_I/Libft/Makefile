@@ -6,12 +6,12 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/06 12:48:06 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/07 11:00:18 by scoudert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-NAME = libft.a
+E = libft.a
 FLAGS = -Wextra -Werror -Wall
 HEAD = libft.h
 OBJS = $(FILES:.c=.o);
@@ -77,6 +77,9 @@ FILES = ft_isalpha.c \
 		ft_strsplit.c \
 
 all: $(NAME)
+	@echo "\033[32mCompile all \".o\"\033[0m"
+	@echo "\033[32mCompile all \".c\"\033[0m"
+	@echo "\033[36mCreate libft.a\033[0m"
 
 $(NAME): $(OBJS)
 	@ar rc $(NAME) $(OBJS)
@@ -86,9 +89,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) -c $^
 
 clean:
+	@echo "\033[31mDelete all \".o\"\033[0m"
 	@rm -rf $(OBJS)
 
 fclean: clean
+	@echo "\033[31mDelete libft.a\033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all
