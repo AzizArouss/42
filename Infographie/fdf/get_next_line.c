@@ -6,12 +6,12 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/04 16:54:12 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/14 15:16:39 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/01/15 11:34:49 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "Libft/includes/libft.h"
+#include "libft.h"
 
 static int		get_concat(char **line, char *buf, int n)
 {
