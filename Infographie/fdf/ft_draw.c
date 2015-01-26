@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 16:25:37 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/22 16:53:03 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/01/26 14:55:58 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,53 @@ void	ft_center(t_env *e, float x_shift, float y_shift, float z_shift)
 	while (++j < e->height && (i = -1))
 		while (++i < e->width)
 		{
+			e->grid[j][i].x = i - x_shift;
+			e->grid[j][i].y = i - y_shift;
+		}
+}
 
+void	ft_fillimg(t_env *e)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	j = e->size * HEIGHT;
+	while (++i < j)
+		e->table[i] = 0x00;
+}
+
+void	ft_transform(t_env *e)
+{
+	int		i;
+	int		j;
+
+	j = -1;
+	while (++j < e->height && (i= -1))
+		while (++i < e->width)
+		{
+			e->grid[j][i].x_2d = (e->grid[j][i].x * e->zoom) + SHIFT;
+			e->grid[j][i].x_2d -= e->grid[j][i].y * e->zoom;
+			e->grid[j][i].y_2d = -0.15 * e->grid[j][i].x * e->zoom;
+			e->grid[j][i].y_2d += (e->grid[j][i].x * e->zoom) + SHIFT;
+			e->grid[j][i].y_2d += e->grid[j][i].y * e->zoom;
+		}
+}
+
+void	ft_draw(t_env *e)
+{
+	int		i;
+	int		j;
+
+	ft_fillimg(e);
+	ft_transform(e);
+	i = -1;
+	while (++i < e->height & (j = -1))
+		while (++j < (e->width - 1))
+			ft_drawline(&e->grid[i][j], &e->grid[i][j + 1], e);
+	i = -1;
+	while (++i < (e->height - 1) && (j = -1))
+		while (++j < e->width)
+			ft_drawline(&e->grid[i][j], &e->grid[i +1][j], e);
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
+}

@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:26:46 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/22 12:57:28 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/01/26 17:47:53 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,9 @@ typedef struct		s_env
 	int				p;
 	int				c;
 }					t_env;
+
+void				*ft_xmalloc(size_t size);
+void				ft_error(char *s);
+
+void				ft_center(t_env *e, float x_shift, float y_shift,
+															float 
