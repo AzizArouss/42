@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:26:46 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/26 17:47:53 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/01/27 12:03:36 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,28 @@ void				*ft_xmalloc(size_t size);
 void				ft_error(char *s);
 
 void				ft_center(t_env *e, float x_shift, float y_shift,
-															float 
+															float z_shift);
+void				ft_draw(t_env *e);
+void				ft_putpixel(int x, int y, t_env *e);
+void				ft_drawline(t_pt *a, t_pt *b, t_env *e);
+
+int					ft_exposehook(t_env *e);
+int					ft_keypress(int keycode, t_env *e);
+
+int					ft_atoi(const char *str);
+void				ft_putendl_fd(char const *s, int fd);
+char				**ft_strsplit(char const *s, char c);
+
+void				ft_colorchoice(t_env *e, int keycode);
+void				ft_colorchoice2(t_env *e, int keycode);
+void				ft_colorchoice3(t_env *e, int keycode);
+
+void				ft_fillimg(t_env *e);
+void				ft_transform(t_env *e);
+void				ft_swapptr(t_pt **a, t_pt **b);
+void				ft_draw_first_case(t_pt *a, t_pt *b, t_env *e);
+void				ft_draw_second_case(t_pt *a, t_pt *b, t_env *e);
+
+void				ft_getinput(t_env *e, char *av);
+t_pt				**ft_addline(t_pt **grid, char **tab, t_env *e);
+#endif

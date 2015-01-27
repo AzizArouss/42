@@ -6,13 +6,13 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 16:25:37 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/26 14:55:58 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/01/27 16:07:19 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_putpixel(int x, int y, t_e	nv *e)
+void	ft_putpixel(int x, int y, t_env *e)
 {
 	x += (WIDTH / 2) - SHIFT;
 	y += (HEIGHT / 2) - SHIFT;
@@ -31,6 +31,16 @@ void	ft_center(t_env *e, float x_shift, float y_shift, float z_shift)
 	j = -1;
 	x_shift = e->width / 2;
 	y_shift = e->height / 2;
+	while (++j < e->height && (i = -1))
+		while (++i < e->width)
+		{
+			e->z_min = (e->grid[j][i].z < e->z_min)
+				? e->grid[j][i].z : e->z_min;
+			e->z_max = (e->grid[j][i].z > e->e_max)
+				? e->grid[j][i].z : e->e_max;
+		}
+	j = -1;
+	z_shift = (e->z_max + e->z_min) / 2;
 	while (++j < e->height && (i = -1))
 		while (++i < e->width)
 		{
@@ -56,7 +66,7 @@ void	ft_transform(t_env *e)
 	int		j;
 
 	j = -1;
-	while (++j < e->height && (i= -1))
+	while (++j < e->height && (i = -1))
 		while (++i < e->width)
 		{
 			e->grid[j][i].x_2d = (e->grid[j][i].x * e->zoom) + SHIFT;
@@ -81,6 +91,6 @@ void	ft_draw(t_env *e)
 	i = -1;
 	while (++i < (e->height - 1) && (j = -1))
 		while (++j < e->width)
-			ft_drawline(&e->grid[i][j], &e->grid[i +1][j], e);
+			ft_drawline(&e->grid[i][j], &e->grid[i + 1][j], e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
