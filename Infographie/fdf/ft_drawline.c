@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/14 15:29:48 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/26 11:57:17 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/28 12:13:58 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/28 12:14:27 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,26 @@ void	ft_swapptr(t_pt **a, t_pt **b)
 
 void	ft_draw_first_case(t_pt *a, t_pt *b, t_env *e)
 {
-	double x;
+	double	x;
 
 	x = a->x_2d;
 	while (x < b->x_2d)
 	{
 		ft_putpixel(x, a->y_2d + ((b->y_2d - a->y_2d) * (x - a->x_2d))
-				/ (b->x_2d - a->x_2d), e);
+					/ (b->x_2d - a->x_2d), e);
 		++x;
 	}
 }
 
 void	ft_draw_second_case(t_pt *a, t_pt *b, t_env *e)
 {
-	double y;
+	double	y;
 
-	x = a->y_2d;
+	y = a->y_2d;
 	while (y < b->y_2d)
 	{
 		ft_putpixel(a->x_2d + ((b->x_2d - a->x_2d) * (y - a->y_2d))
-				/ (b->y_2d - a->y_2d), y, e);
+					/ (b->y_2d - a->y_2d), y, e);
 		++y;
 	}
 }

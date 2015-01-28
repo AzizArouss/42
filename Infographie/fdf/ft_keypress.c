@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 17:09:50 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/26 11:56:55 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/28 12:14:06 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/28 12:14:28 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_colorchoice3(t_env *e, int keycode)
+void		ft_colorchoice3(t_env *e, int keycode)
 {
 	if (keycode == 121 && (e->y = 0xcc))
 	{
@@ -35,7 +35,7 @@ void	ft_colorchoice3(t_env *e, int keycode)
 	ft_draw(e);
 }
 
-void	ft_colorchoice2(t_env *e, int keycode)
+void		ft_colorchoice2(t_env *e, int keycode)
 {
 	if (keycode == 98 && (e->b = 0xe9))
 	{
@@ -52,7 +52,7 @@ void	ft_colorchoice2(t_env *e, int keycode)
 	ft_draw(e);
 }
 
-void	ft_colorchoice(t_env *e, int keycode)
+void		ft_colorchoice(t_env *e, int keycode)
 {
 	if (keycode == 32 || keycode == 100)
 	{
@@ -76,13 +76,13 @@ void	ft_colorchoice(t_env *e, int keycode)
 	ft_draw(e);
 }
 
-int		ft_exposehook(t_env *e)
+int			ft_exposehook(t_env *e)
 {
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 	return (0);
 }
 
-int		ft_keypress(int keycode, t_env *e)
+int			ft_keypress(int keycode, t_env *e)
 {
 	if (keycode == 65307)
 		exit(0);

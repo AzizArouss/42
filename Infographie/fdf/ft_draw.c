@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/22 16:25:37 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/27 16:07:19 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/28 12:13:50 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/28 12:13:53 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void	ft_center(t_env *e, float x_shift, float y_shift, float z_shift)
 		{
 			e->z_min = (e->grid[j][i].z < e->z_min)
 				? e->grid[j][i].z : e->z_min;
-			e->z_max = (e->grid[j][i].z > e->e_max)
-				? e->grid[j][i].z : e->e_max;
+			e->z_max = (e->grid[j][i].z > e->z_max)
+				? e->grid[j][i].z : e->z_max;
 		}
 	j = -1;
 	z_shift = (e->z_max + e->z_min) / 2;
@@ -45,7 +45,7 @@ void	ft_center(t_env *e, float x_shift, float y_shift, float z_shift)
 		while (++i < e->width)
 		{
 			e->grid[j][i].x = i - x_shift;
-			e->grid[j][i].y = i - y_shift;
+			e->grid[j][i].y = j - y_shift;
 		}
 }
 
@@ -71,7 +71,7 @@ void	ft_transform(t_env *e)
 		{
 			e->grid[j][i].x_2d = (e->grid[j][i].x * e->zoom) + SHIFT;
 			e->grid[j][i].x_2d -= e->grid[j][i].y * e->zoom;
-			e->grid[j][i].y_2d = -0.15 * e->grid[j][i].x * e->zoom;
+			e->grid[j][i].y_2d = -0.15 * e->grid[j][i].z * e->zoom;
 			e->grid[j][i].y_2d += (e->grid[j][i].x * e->zoom) + SHIFT;
 			e->grid[j][i].y_2d += e->grid[j][i].y * e->zoom;
 		}
@@ -85,7 +85,7 @@ void	ft_draw(t_env *e)
 	ft_fillimg(e);
 	ft_transform(e);
 	i = -1;
-	while (++i < e->height & (j = -1))
+	while (++i < e->height && (j = -1))
 		while (++j < (e->width - 1))
 			ft_drawline(&e->grid[i][j], &e->grid[i][j + 1], e);
 	i = -1;

@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/07 11:56:39 by scoudert         ###   ########.fr        #
+#    Updated: 2015/01/28 14:47:49 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,20 +31,15 @@ FILES = ft_isalpha.c ft_isdigit.c ft_isascii.c ft_isprint.c ft_isalnum.c \
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(FLAGS) -c $(FILES) -I $(HEAD)
-	@echo "\033[32mCompile all .c \033[0m"
-	@ar rc $(NAME) $(OBJS)
-	@echo "\033[32mCompile all .o \033[0m"
-	@ranlib $(NAME)
-	@echo "\033[36mCreate libft.a \033[0m"
+	$(CC) $(FLAGS) -c $(FILES) -I $(HEAD)
+	ar rc $(NAME) $(OBJS)
+	ranlib $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
-	@echo "\033[31mDelete all .o \033[0m"
+	rm -rf $(OBJS)
 
 fclean: clean
-	@echo "\033[31mDelete libft.a\033[0m"
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 

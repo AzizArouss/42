@@ -5,20 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 17:26:46 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/27 12:03:36 by aarouss          ###   ########.fr       */
+/*   Created: 2015/01/28 12:13:36 by aarouss           #+#    #+#             */
+/*   Updated: 2015/01/28 12:18:41 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FDF_H
 # define FT_FDF_H
 
-# define WIDTGH (2550)
+# define WIDTH (2550)
 # define HEIGHT (1300)
-# define SHIFT (5000
-# define ABS(a) ((a <0) ? (-(a)) : (a))
-
-# include <fctnl.h>
+# define SHIFT (500)
+# define ABS(a) ((a < 0) ? (-(a)) : (a))
+# include <fcntl.h>
 # include <mlx.h>
 # include <stdlib.h>
 # include <string.h>
