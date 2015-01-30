@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/06 13:06:14 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/30 14:59:25 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,9 +86,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) -c $^
 
 clean:
+	@echo "\033[1;31mJarvis, nettoie ma bibliotheque, supprime les .o\033[0m"
 	@rm -rf $(OBJS)
 
 fclean: clean
+	@echo "\033[1;32mTu n'a rien oublie ? Supprime moi l'excecutable !\033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all
