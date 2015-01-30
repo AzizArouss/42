@@ -6,15 +6,19 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/30 14:59:25 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/30 15:50:05 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = libft.a
+
 FLAGS = -Wextra -Werror -Wall
+
 HEAD = libft.h
+
 OBJS = $(FILES:.c=.o);
+
 FILES = ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isascii.c \
@@ -74,7 +78,7 @@ FILES = ft_isalpha.c \
 		ft_lstiter.c \
 		ft_lstnew.c \
 		ft_lstmap.c \
-		ft_strsplit.c \
+		ft_strsplit.c
 
 all: $(NAME)
 
@@ -86,11 +90,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) -c $^
 
 clean:
-	@echo "\033[1;31mJarvis, nettoie ma bibliotheque, supprime les .o\033[0m"
+	@echo "\033[7;35mご   | Jarvis, apres avoir fait le compilation, n'oublie pas de nettoyer ma bibliotheque, supprime les .o                                                                          \033[0m"
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@echo "\033[1;32mTu n'a rien oublie ? Supprime moi l'excecutable !\033[0m"
+	@echo "\033[7;36mろく | Tu n'a rien oublie ? sur ? Reflechis a ce que tu va dire avant que je te jette dans la benne a ordures ! C'est bon, tu t'en souviens ? Alors supprime moi l'excecutable !   \033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all
