@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 12:13:05 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/28 15:36:22 by aarouss          ###   ########.fr        #
+#    Updated: 2015/01/30 11:19:27 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,18 +27,22 @@ MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	make -C libft
-	$(CC) $(FLAGS) $(MLXFLAGS) -o $@ $^ -L libft -lft
+	@echo "\033[1;35mTres bien, maintenant, compile la bibliotheque\033[0m"
+	@make -C libft
+	@$(CC) $(FLAGS) $(MLXFLAGS) -o $@ $^ -L libft -lft
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $<
+	@echo "\033[1;33m~ Compilation des fichiers .c SENPAI ♥ ~\033[0m"
+	@$(CC) $(FLAGS) -c $<
 
 clean:
-	rm -f $(OBJECTS)
+	@echo "\033[1;31mBonjour Jarvis, supprime les fichiers .o\033[0m"
+	@rm -f $(OBJECTS)
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "\033[1;32mMaintenant, supprime l'executable fdf\033[0m"
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all, fclean, clean, re
