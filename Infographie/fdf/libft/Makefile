@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/01/30 15:50:05 by aarouss          ###   ########.fr        #
+#    Updated: 2015/02/03 11:58:06 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,11 +90,11 @@ $(NAME): $(OBJS)
 	@$(CC) $(FLAGS) -c $^
 
 clean:
-	@echo "\033[7;35mご   | Jarvis, apres avoir fait le compilation, n'oublie pas de nettoyer ma bibliotheque, supprime les .o                                                                          \033[0m"
+	@echo "\033[7;35mご   | Jarvis, apres avoir fait le compilation, n'oublie pas de nettoyer ma bibliotheque, supprime les .o                                                                                                                                                                                                                                                                 \033[0m"
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@echo "\033[7;36mろく | Tu n'a rien oublie ? sur ? Reflechis a ce que tu va dire avant que je te jette dans la benne a ordures ! C'est bon, tu t'en souviens ? Alors supprime moi l'excecutable !   \033[0m"
+	@echo "\033[7;36mろく | Tu n'a rien oublie ? sur ? Reflechis a ce que tu va dire avant que je te jette dans la benne a ordures ! C'est bon, tu t'en souviens ? Alors supprime moi l'excecutable !                                                                                                                                                                                          \033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all
