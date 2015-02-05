@@ -6,7 +6,7 @@
 #    By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 08:35:31 by aarouss           #+#    #+#              #
-#    Updated: 2015/02/05 11:12:34 by aarouss          ###   ########.fr        #
+#    Updated: 2015/02/05 13:03:36 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,18 +83,21 @@ FILES = ft_isalpha.c \
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	@echo "\033[7;37m Lib > Compile all .c  \033[0m"
 	@ar rc $(NAME) $(OBJS)
+	@echo "\033[7;37m Lib > Compile all .o  \033[0m"
 	@ranlib $(NAME)
+	@echo "\033[7;37m Lib > Create libft.a  \033[0m"
 
 %.o : %.c
 	@$(CC) $(FLAGS) -c $^
 
 clean:
-	@echo "\033[7;35mご   | Delete all .o  \033[0m"
+	@echo "\033[7;35m Lib > Delete all .o   \033[0m"
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@echo "\033[7;36mろく | Delete libft.a \033[0m"
+	@echo "\033[7;36m Lib > Delete libft.a  \033[0m"
 	@rm -rf $(NAME)
 
 re: fclean all

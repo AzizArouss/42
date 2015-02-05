@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 12:13:05 by aarouss           #+#    #+#              #
-#    Updated: 2015/02/05 11:36:13 by aarouss          ###   ########.fr        #
+#    Updated: 2015/02/05 12:50:24 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,20 +27,20 @@ MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	@echo "\033[7;34mよん | Compile all .o \033[0m"
+	@echo "\033[7;34m FdF > Compile all .o  \033[0m"
 	@make -C libft re
 	@$(CC) $(FLAGS) $(MLXFLAGS) -o $@ $^ -L libft -lft
 
 %.o: %.c
-	@echo "\033[7;33mさん | Compile all .c \033[0m"
+	@echo "\033[7;33m FdF > Compile all .c  \033[0m"
 	@$(CC) $(FLAGS) -c $<
 
 clean:
-	@echo "\033[7;31mいち | Delete all .o  \033[0m"
+	@echo "\033[7;31m FdF > Delete all .o   \033[0m"
 	@rm -f $(OBJECTS)
 
 fclean: clean
-	@echo "\033[7;32mに   | Delete fdf file\033[0m"
+	@echo "\033[7;32m FdF > Delete fdf file \033[0m"
 	@rm -f $(NAME)
 
 re: fclean all
