@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/28 12:13:05 by aarouss           #+#    #+#              #
-#    Updated: 2015/02/03 11:58:31 by aarouss          ###   ########.fr        #
+#    Updated: 2015/02/05 10:08:43 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,6 @@ clean:
 	@echo "\033[7;31mいち | Bonjour Jarvis, avant que tu commence la compilation, je voudrais que tu fasse un peu le menage, commence par supprimer les .o !                                                                                                                                                                                                                                   \033[0m"
 	@rm -f $(OBJECTS)
 
-clean_libft:
-	@rm -rf 
 fclean: clean
 	@echo "\033[7;32mに   | Desormais, tu peux commencer a supprimer l'executable fdf ;)                                                                                                                                                                                                                                                                                                       \033[0m"
 	@rm -f $(NAME)
