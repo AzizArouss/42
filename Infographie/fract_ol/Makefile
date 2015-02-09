@@ -5,44 +5,39 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/01/28 12:13:05 by aarouss           #+#    #+#              #
-#    Updated: 2015/02/09 16:11:19 by aarouss          ###   ########.fr        #
+#    Created: 2015/02/09 13:53:38 by aarouss           #+#    #+#              #
+#    Updated: 2015/02/09 16:11:22 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fdf
+NAME = fractol
 
-SOURCES = fdf.c \
-			ft_draw.c \
-			get_next_line.c \
-			ft_drawline.c \
-			ft_keypress.c 
+CC = gcc
 
-OBJECTS = $(SOURCES:.c=.o)
+SRC = ft_init.c \
+			ft_keypress.c \
+			ft_fractals.c \
+			ft_init_fract.c \
+			ft_images.c
 
-FLAGS = -Wall -Werror -Wextra -O3 -I ./includes -I /usr/X11/include
+CFLAGS = -Wall -Werror -Wextra -I ./includes -I/usr/X11/includes
 
 MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	@echo "\033[7;34m FdF > Compile all .o  \033[0m"
-	@make -C libft re
-	@$(CC) $(FLAGS) $(MLXFLAGS) -o $@ $^ -L libft -lft
-
-%.o: %.c
-	@echo "\033[7;33m FdF > Compile all .c  \033[0m"
-	@$(CC) $(FLAGS) -c $<
+$(NAME):
+	@make -C libft
+	@$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(SRC) -L libft -lft
 
 clean:
-	@echo "\033[7;31m FdF > Delete all .o   \033[0m"
-	@rm -f $(OBJECTS)
+	@rm -rf $(OBJ)
 
 fclean: clean
-	@echo "\033[7;32m FdF > Delete fdf file \033[0m"
-	@rm -f $(NAME)
+	@make fclean -C libft
+	@rm -rf $(NAME)
 
 re: fclean all
+	@make re -C libft
 
 .PHONY: all, fclean, clean, re
