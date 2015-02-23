@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/02/09 13:53:38 by aarouss           #+#    #+#              #
-#    Updated: 2015/02/10 14:14:02 by aarouss          ###   ########.fr        #
+#    Created: 2015/02/23 13:29:38 by aarouss           #+#    #+#              #
+#    Updated: 2015/02/23 13:31:36 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,12 @@ NAME = fractol
 CC = gcc
 
 SRC = ft_init.c \
-			ft_keypress.c \
-			ft_fractals.c \
-			ft_init_fract.c \
-			ft_images.c
+		ft_keypress.c \
+		ft_fractals.c \
+		ft_init_fract.c \
+		ft_images.c
 
-CFLAGS = -Wall -Werror -Wextra -I ./includes -I/usr/X11/includes
+CFLAGS = -Wall -Werror -Wextra -I ./includes -I /usr/X11/include
 
 MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
 
@@ -40,4 +40,4 @@ fclean: clean
 re: fclean all
 	@make re -C libft
 
-.PHONY: all, fclean, clean, re
+.PHONY: all, fclean, clean, re 

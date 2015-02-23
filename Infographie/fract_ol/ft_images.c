@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/02/10 10:15:14 by aarouss           #+#    #+#             */
-/*   Updated: 2015/02/10 15:55:03 by aarouss          ###   ########.fr       */
+/*   Created: 2015/02/23 13:29:55 by aarouss           #+#    #+#             */
+/*   Updated: 2015/02/23 13:30:18 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,29 @@ void	ft_setinit(t_env *e)
 {
 	e->init.real = e->center.real - WIN_HEIGHT / 2 * e->steps.real;
 	e->init.imag = e->center.imag - WIN_WIDTH / 2 * e->steps.imag;
+}
+
+t_color	ft_tohex(int h, float s, float l)
+{
+	t_color	color;
+	float	c;
+	float	x;
+	float	m;
+
+	c = (1.0 - fabs(2 * l - 1.0)) * s;
+	x = c * (1.0 - fabs(fmod((h / 60.0), 2) - 1.0));
+	m = l - 0.5 * c;
+	if (h >= 0 && h < 360)
+		return (ft_get_color((c + m) * 255, (x + m) * 255, (0 + m) * 255));
+	color.rgb[0] = 0;
+	color.rgb[1] = 0;
+	color.rgb[2] = 0;
+	color.rgb[3] = 0;
+	return (color);
+}
+
+void	ft_error(char *s)
+{
+	ft_putendl_fd(s, 2);
+	exit(1);
 }
