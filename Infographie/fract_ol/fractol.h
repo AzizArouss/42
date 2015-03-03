@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 13:29:45 by aarouss           #+#    #+#             */
-/*   Updated: 2015/02/23 13:30:16 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/03/03 14:23:20 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				ft_julia(int max_it, t_complex z, t_complex c);
 int				ft_mandelbrot(int max_it, t_complex z, t_complex c);
 int				ft_dragon(int max_it, t_complex z, t_complex c);
 void			ft_setinit(t_env *e);
-int 			ft_julia3(int max_it, t_complex z, t_complex c);
+int				ft_julia3(int max_it, t_complex z, t_complex c);
 int				ft_julia4(int max_it, t_complex z, t_complex c);
 int				ft_init_julia3(t_env *e);
 int				ft_init_julia4(t_env *e);

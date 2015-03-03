@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 13:29:51 by aarouss           #+#    #+#             */
-/*   Updated: 2015/02/23 13:30:17 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/03/03 15:18:54 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ int		ft_julia3(int max_it, t_complex z, t_complex c)
 		i++;
 		x = tmp.real;
 		tmp.real = x * x * x - 3 * x * tmp.imag * tmp.imag + c.real;
-		tmp.imag = 3 * x * x * tmp.imag - tmp.imag * tmp.imag * tmp.imag + c.imag;
+		tmp.imag = 3 * x * x * tmp.imag - tmp.imag * tmp.imag * tmp.imag +
+			c.imag;
 	}
 	return (i);
 }
@@ -116,25 +117,19 @@ int		ft_juliae3(int max_it, t_complex z, t_complex c)
 	int			i;
 	t_complex	tmp;
 	double		x;
-	double 		s;
-	double 		d;
-	double 		u;
+	double		u;
 
-	i = 0;
+	i = -1;
 	tmp.real = z.real;
 	tmp.imag = z.imag;
-	while (i < max_it && (tmp.real * tmp.real + tmp.imag * tmp.imag) < 4)
+	while (++i < max_it && (tmp.real * tmp.real + tmp.imag * tmp.imag) < 4)
 	{
-		i++;
 		x = tmp.real;
 		tmp.real = x * x * x - 3 * x * tmp.imag * tmp.imag;
 		tmp.imag = 3 * x * x * tmp.imag - tmp.imag * tmp.imag * tmp.imag;
-
-		s = sin(tmp.imag);
-		d = cos(tmp.imag);
-  		u = exp(tmp.real);
-  		tmp.real = u * d + c.real;
-  		tmp.imag = u * s + c.imag;
+		u = exp(tmp.real);
+		tmp.real = u * cos(tmp.imag) + c.real;
+		tmp.imag = u * sin(tmp.imag) + c.imag;
 	}
 	return (i);
 }

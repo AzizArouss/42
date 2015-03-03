@@ -6,7 +6,7 @@
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/23 13:29:59 by aarouss           #+#    #+#             */
-/*   Updated: 2015/02/23 13:30:19 by aarouss          ###   ########.fr       */
+/*   Updated: 2015/03/03 14:22:01 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			main(int ac, char **av)
 	if (ac != 2)
 		ft_error("Fractal: mandelbrot, dragon, julia(3/4/e) or fractoil.");
 	if (!(ft_strequ("mandelbrot", av[1]) || ft_strequ("dragon", av[1]) ||
-		ft_strequ("julia", av[1]) || ft_strequ("julia3", av[1]) || 
+		ft_strequ("julia", av[1]) || ft_strequ("julia3", av[1]) ||
 		ft_strequ("julia4", av[1]) || ft_strequ("fractoil", av[1]) ||
 		ft_strequ("juliae3", av[1])))
 		ft_error("Fractal: mandelbrot, dragon, julia(3/4/e) or fractoil.");
