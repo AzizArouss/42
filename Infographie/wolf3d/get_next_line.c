@@ -5,82 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/12/04 16:54:12 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/05 14:43:49 by aarouss          ###   ########.fr       */
+/*   Created: 2015/03/10 08:01:22 by aarouss           #+#    #+#             */
+/*   Updated: 2015/03/10 08:01:42 by aarouss          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-#include "Libft/includes/libft.h"
+#include "wolf3d.h"
 
-static int		get_concat(char **line, char *buf, int n)
+void	ft_get1(int ret, char *buf, char **tmp)
 {
-	char			*ret;
-	int				len;
+	char	*tmp2;
 
-	len = (*line ? ft_strlen(*line) : 0);
-	if (!(ret = (char*)malloc(sizeof(ret) * (len + n + 1))))
-		return (0);
-	ft_bzero(ret, len + n + 1);
-	if (*line)
-	{
-		ft_strcpy(ret, *line);
-		free(*line);
-	}
-	ft_strncat(ret, buf, n);
-	*line = ret;
-	return (1);
+	buf[ret] = '\0';
+	tmp2 = *tmp;
+	*tmp = ft_strjoin(tmp2, buf);
+	ft_strdel(&tmp2);
 }
 
-static int		get_refresh(char *buf, int i)
+void	ft_get2(char **line, char **tmp)
 {
-	ft_strncpy(buf, &(buf[i]), BUFF_SIZE);
-	return (1);
+	char	*tmp2;
+	size_t	len;
+
+	len = ft_strchr(*tmp, '\n') - *tmp;
+	*line = ft_strsub(*tmp, 0, len);
+	tmp2 = *tmp;
+	*tmp = ft_strdup(ft_strchr(*tmp, '\n') + 1);
+	ft_strdel(&tmp2);
 }
 
-static int		get_loop(int const fd, int *check, char **buf, char **line)
+int		get_next_line(int fd, char **line)
 {
-	int i;
+	char			buff[BUFF_SIZE + 1];
+	int				ret;
+	static char		*tmp;
 
-	i = 0;
-	while ((*buf)[i] != '\n' && !((*buf)[i] == '\0' && *check == 0))
-	{
-		if ((*buf)[i] == '\0')
-		{
-			if (!get_concat(line, *buf, i))
-				return (-1);
-			*check = read(fd, (*buf), BUFF_SIZE);
-			(*buf)[*check] = 0;
-			i = -1;
-		}
-		i++;
-	}
-	return (i);
-}
-
-int				get_next_line(int const fd, char **line)
-{
-	static char		*buf;
-	static int		check;
-	int				i;
-
-	if (fd < 0 || line == NULL)
+	if (!tmp)
+		tmp = ft_strnew(0);
+	ret = 0;
+	while ((ft_strchr(tmp, '\n')) == NULL
+		&& (ret = read(fd, buff, BUFF_SIZE)) > 0)
+		ft_get1(ret, buff, &tmp);
+	if (ret == -1)
 		return (-1);
-	*line = NULL;
-	if (!check)
+	if (ret == 0 && ft_strchr(tmp, '\n') == NULL)
 	{
-		if (!(buf = (char*)malloc(sizeof(char) * (BUFF_SIZE + 1))))
-			return (-1);
-		check = read(fd, buf, BUFF_SIZE);
-		if (check == -1)
-			return (check);
-		buf[check] = 0;
+		*line = tmp;
+		tmp = NULL;
+		return (0);
 	}
-	i = get_loop(fd, &check, &buf, line);
-	if (buf[i] == '\n' || buf[i] == '\0')
-	{
-		if (!get_concat(line, buf, i) || !get_refresh(buf, i + 1))
-			return (-1);
-	}
-	return (check ? 1 : 0);
+	ft_get2(line, &tmp);
+	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/03/09 10:59:36 by aarouss           #+#    #+#              #
-#    Updated: 2015/03/09 14:17:43 by aarouss          ###   ########.fr        #
+#    Updated: 2015/03/10 09:49:42 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
 
 all: $(NAME)
 
-$NAME():
+$(NAME):
 	make -C libft
 	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(SRC) -L libft -lft
 
