@@ -1,25 +1,26 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_memset.s                                        :+:      :+:    :+:    #
+#    ft_strcpy.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:29 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:17 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/07 16:12:04 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/11 11:22:37 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 section .text
-	global _ft_memset
 
-segment .text
+extern	_ft_strlen
+extern	_ft_memcpy
 
-_ft_memset:
-	push rdi
-	mov rcs, rdx
-	mov rax, rsi
-	cld
-	rep stosb
-	pop rax
+global	_ft_strcpy
+
+_ft_strcpy:
+	mov		r12, rdi
+	mov		rdi, rsi
+	call	_ft_strlen
+	mov		rdi, r12
+	call	_ft_memcpy
 	ret
