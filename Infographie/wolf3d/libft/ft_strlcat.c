@@ -3,33 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 08:22:19 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:56 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/08 19:05:54 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/08 20:55:33 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "string.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t			ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	dstlen;
-	size_t	srclen;
+	size_t		len;
+	size_t		dst_len;
+	char		*copy_dst;
+	char		*copy_src;
 
-	dstlen = ft_strlen(dst);
-	srclen = ft_strlen(src);
-	if (size < dstlen)
+	copy_dst = dst;
+	copy_src = (char *)src;
+	len = size;
+	while (*copy_dst && len--)
+		copy_dst++;
+	dst_len = copy_dst - dst;
+	len = size - dst_len;
+	if (len == 0)
+		return (dst_len + ft_strlen(copy_src));
+	while (*copy_src != '\0')
 	{
-		return (size + srclen);
+		if (len != 1)
+		{
+			*copy_dst++ = *copy_src;
+			len--;
+		}
+		copy_src++;
 	}
-	i = 0;
-	while (src[i] != '\0' && (dstlen + i + 1) < size)
-	{
-		dst[dstlen + i] = src[i];
-		i++;
-	}
-	dst[dstlen + i] = '\0';
-	return (dstlen + srclen);
+	*copy_dst = '\0';
+	return (dst_len + (copy_src - src));
 }

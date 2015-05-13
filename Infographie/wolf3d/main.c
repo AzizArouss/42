@@ -1,59 +1,34 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/10 08:01:26 by aarouss           #+#    #+#             */
-/*   Updated: 2015/03/10 08:01:42 by aarouss          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "wolf3d.h"
 
-void	ft_error(char *s)
+void	ft_init(t_all *all)
 {
-	ft_putendl_fd(s, 2);
-	exit(1);
-}
-
-int		shoot(int button, int x, int y, t_env *e)
-{
-	if (button == 1)
-	{
-		e->draw.x = x;
-		init_draw(e);
-		calc_steps_and_side_dist(e);
-		while (e->draw.hit == 0)
-		{
-			to_next_square(e);
-			if (e->world_map[e->draw.mapx][e->draw.mapy] > 0)
-				e->draw.hit = 1;
-		}
-		calc_wall_dist(e);
-		calc_line_height(e);
-		if (e->world_map[e->draw.mapx][e->draw.mapy] > 2
-					&& e->draw.draw_start < y && e->draw.draw_end > y)
-			e->world_map[e->draw.mapx][e->draw.mapy] = 0;
-		ft_draw(e);
-	}
-	return (0);
+	all->re = 1;
+	all->self.pos_x = 12.5;
+	all->self.pos_y = 12.5;
+	all->self.dir_x = -1;
+	all->self.dir_y = 0;
+	all->self.plane_x = 0;
+	all->self.plane_y = 0.66;
+	all->self.dt = 0;
+	all->self.old_time = 0;
 }
 
 int		main(void)
 {
-	t_env	e;
+	t_all	*all;
 
-	init_env(&e);
-	fill_steve(&(e.s));
-	e.mlx = mlx_init();
-	init_map(&e);
-	e.win = mlx_new_window(e.mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3D");
-	mlx_hook(e.win, KeyPress, KeyPressMask, &key_hook, &e);
-	mlx_hook(e.win, KeyRelease, KeyReleaseMask, &key_hook_r, &e);
-	mlx_mouse_hook(e.win, &shoot, &e);
-	mlx_loop_hook(e.mlx, &loop_hook, &e);
-	mlx_loop(e.mlx);
+	all = (t_all*)malloc(sizeof(t_all));
+	all->e.mlx = mlx_init();
+	all->e.win = mlx_new_window(all->e.mlx, WIN_WIDTH, WIN_HEIGHT, "Wolf3d");
+	ft_init(all);
+	init_map(all);
+	all->img.img = mlx_new_image(all->e.mlx, WIN_WIDTH, WIN_HEIGHT);
+	all->img.data = mlx_get_data_addr(all->img.img, &all->img.bpp,
+	&all->img.size_line, &all->img.endian);
+	mlx_loop_hook(all->e.mlx, loop_hook, all);
+	mlx_hook(all->e.win, 2, (1L << 0), key, all);
+	mlx_key_hook(all->e.win, key_hook, all);
+	mlx_expose_hook(all->e.win, expose_hook, all);
+	mlx_loop(all->e.mlx);
 	return (0);
 }

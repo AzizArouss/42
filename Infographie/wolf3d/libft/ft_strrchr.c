@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 16:06:22 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:52:30 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/08 17:52:38 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/12 09:51:57 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char		*ft_strrchr(const char *s, int c)
 {
-	int		length;
+	int		i;
+	char	*copy;
 
-	length = ft_strlen(s);
-	while (length >= 0)
+	copy = (char *)s;
+	i = ft_strlen(copy);
+	while (i >= 0)
 	{
-		if (s[length] == (char)c)
-		{
-			return (&(((char *)s)[length]));
-		}
-		length--;
+		if (copy[i] == (char)c)
+			return (copy + i);
+		i--;
 	}
 	return (NULL);
 }

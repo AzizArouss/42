@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 08:25:03 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:20 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/09 21:32:35 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/09 21:42:52 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	ft_putendl(char const *s)
+void		ft_putendl(char const *s)
 {
-	ft_putstr(s);
-	ft_putchar('\n');
+	while (*s)
+		write(1, s++, 1);
+	write(1, "\n", 1);
 }

@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/06 12:32:01 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:51:16 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/10 15:00:15 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/10 22:31:13 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char *ft_strsub(char const *s, unsigned int start, size_t len)
+char		*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str;
+	char				*str;
+	unsigned int		cpy_len;
+	unsigned int		cpy_start;
+	char				*ret;
 
-	i = 0;
-	if (s == NULL)
+	if (!s || !(*s) || !len)
 		return (NULL);
-	str = NULL;
-	str = ft_strnew(len);
-	if (str == NULL || start + len > ft_strlen(s))
+	cpy_len = (unsigned int)len;
+	cpy_start = start;
+	str = (char *)(malloc(sizeof(len + 1)));
+	if (!str)
 		return (NULL);
-	while (i < len + start)
-	{
-		if (i >= start)
-			str[i - start] = s[i];
-		i++;
-	}
-	return (str);
+	ret = str;
+	s += start;
+	while (cpy_start++ < (cpy_len + start))
+		*str++ = *s++;
+	*str = '\0';
+	return (ret);
 }

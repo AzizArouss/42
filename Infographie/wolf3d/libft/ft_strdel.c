@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/07 15:52:41 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:46 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/09 19:43:30 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/09 19:49:52 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	ft_strdel(char **as)
+void		ft_strdel(char **as)
 {
 	if (as && *as)
 	{

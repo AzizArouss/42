@@ -3,37 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 15:12:09 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:52:59 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/10 15:55:34 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/12 10:02:22 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strtrim(char const *s)
+static size_t		ft_count_space_beg(const char *s)
 {
-	char	*newstr;
-	int		len;
-	int		start;
+	size_t			c;
+
+	c = 0;
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+	{
+		c++;
+		s++;
+	}
+	return (c);
+}
+
+static size_t		ft_count_space_end(const char *s)
+{
+	size_t			c;
+
+	s += ft_strlen(s) - 1;
+	c = 0;
+	while (*s == ' ' || *s == '\n' || *s == '\t')
+	{
+		c++;
+		s--;
+	}
+	return (c);
+}
+
+char				*ft_strtrim(const char *s)
+{
+	char			*str;
+	size_t			i;
+	size_t			beg;
+	size_t			end;
 
 	if (!s)
 		return (NULL);
-	start = 0;
-	while (*s == '\n' || *s == ' ' || *s == '\t')
-		s++;
-	len = ft_strlen(s);
-	newstr = ft_strnew(len - start);
-	if (newstr == NULL)
-		return (NULL);
-	newstr = ft_strcpy(newstr, s);
-	while (len-- >= 0)
-	{
-		if (s[len] == '\n' || s[len] == ' ' || s[len] == '\t')
-			newstr[len] = 0;
-		else
-			break ;
-	}
-	return (newstr);
+	beg = ft_count_space_beg(s);
+	end = ft_count_space_end(s);
+	i = ft_strlen(s + beg) - end;
+	if (beg == end && i == -beg)
+		return (ft_strnew(1));
+	str = ft_strsub(s, beg, i);
+	return (str);
 }

@@ -3,35 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 16:05:26 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:08 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/10 15:57:15 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/10 22:18:50 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char *ft_itoa(int n)
+static int		ft_count(int n)
 {
-	char	*ret;
-	int		temp_n;
-	size_t	size_ret;
-	char	sign;
+	int			j;
 
-	sign = (n < 0) ? -1 : 1;
-	size_ret = 2 + (n < 0);
-	temp_n = n;
-	while ((n = n / 10))
-		size_ret++;
-	n = temp_n;
-	if ((ret = (char *)malloc(sizeof(char) * size_ret--)) == NULL)
+	j = 0;
+	while (n /= 10)
+		j++;
+	return (j + 1);
+}
+
+char			*ft_itoa(int n)
+{
+	char		*str;
+	char		*ret;
+	int			len;
+
+	len = ft_count(n);
+	str = (char *)(malloc(sizeof(char) * (len + (n < 0 ? 1 : 0) + 1)));
+	if (!str)
 		return (NULL);
-	ret[size_ret--] = '\0';
-	ret[size_ret--] = sign * (n % 10) + '0';
-	while ((n = n / 10))
-		ret[size_ret--] = sign * (n % 10) + '0';
-	if (sign < 0)
-		ret[size_ret] = '-';
+	ret = str;
+	if (n == -2147483648)
+		return (ft_strcpy(str, "-2147483648"));
+	if (n < 0)
+	{
+		*str++ = '-';
+		n = -n;
+	}
+	str += len - 1;
+	*(str + 1) = '\0';
+	while (len--)
+	{
+		*str-- = (char)(n % 10) + '0';
+		n /= 10;
+	}
 	return (ret);
 }

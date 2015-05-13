@@ -1,46 +1,35 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/03/09 10:59:36 by aarouss           #+#    #+#              #
-#    Updated: 2015/03/10 09:49:42 by aarouss          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME	= wolf3d
+SRC		= main.c \
+		  hook.c \
+		  map.c  \
+		  draw.c \
+		  raycasting.c \
+		  keys.c
 
-NAME = wolf3d
 
-CC = gcc
-
-SRC = ft_keypress.c \
-	  	ft_map.c	\
-		ft_calcul.c	\
-		ft_draw.c	\
-		ft_inits.c	\
-		ft_move.c	\
-		main.c		\
-		get_next_line.c
-
-CFLAGS = -Wall -Werror -Wextra -I ./includes -I /usr/X11/include
-
-MLXFLAGS = -L/usr/X11/lib -lmlx -lX11 -lXext
+OBJ		= $(SRC:.c=.o)
+CC		= gcc
+FLAGS	= -Wall -Wextra -Werror -I minilibx_macos
 
 all: $(NAME)
 
-$(NAME):
-	make -C libft
-	$(CC) $(CFLAGS) $(MLXFLAGS) -o $(NAME) $(SRC) -L libft -lft
+$(NAME): $(OBJ)
+	@make -C libft/
+	@make -C minilibx_macos/
+	@$(CC) $(OBJ) -o $(NAME) -L libft/ -lft $(FLAGS) -lmlx -framework OpenGL -framework AppKit
+
+%.o: %.c
+	@$(CC) -I . -o $@ -c $? $(FLAGS)
+
+.PHONY: clean fclean re
 
 clean:
-	rm -rf $(OBJ)
+	@rm -f $(OBJ)
+	@make -C libft/ clean
+	@make -C minilibx_macos/ clean
 
 fclean: clean
-	make fclean -C libft
-	rm -rf $(NAME)
+	@rm -f $(NAME)
+	@make -C libft/ fclean
 
 re: fclean all
-	make re -C libft
-
-.PHONY: all, fclean, clean, re

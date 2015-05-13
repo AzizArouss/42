@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 11:54:40 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:14 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/08 17:23:00 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/11 14:09:50 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+int					ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	unsigned char	*copy_s1;
+	unsigned char	*copy_s2;
 
-	i = 0;
-	while (i < n)
+	copy_s1 = (unsigned char *)s1;
+	copy_s2 = (unsigned char *)s2;
+	while (n--)
 	{
-		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
-		{
-			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
-		}
-		i++;
+		if (*copy_s1 != *copy_s2)
+			return (*copy_s1 - *copy_s2);
+		copy_s1++;
+		copy_s2++;
 	}
 	return (0);
 }

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   toupper.c                                          :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 16:14:46 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:52:01 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/05 09:05:55 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/08 20:57:06 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int			ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
-	{
+	if (c >= 97 && c <= 122)
 		return (c - 32);
-	}
-	return (c);
+	else
+		return (c);
 }

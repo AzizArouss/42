@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tolower.c                                          :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 16:09:37 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:03 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/05 16:05:37 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/08 20:59:37 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int			ft_tolower(int c)
 {
-	if (c > 64 && c < 91)
-	{
+	if (c <= 90 && c >= 65)
 		return (c + 32);
-	}
-	return (c);
+	else
+		return (c);
 }

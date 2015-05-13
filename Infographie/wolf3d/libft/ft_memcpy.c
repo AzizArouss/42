@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 08:50:19 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:15 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/08 15:46:17 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/16 14:42:48 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
-void	*ft_memcpy(void *s1, const void *s2, size_t n)
+void					*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	size_t	i;
+	const unsigned char	*copy_src;
+	unsigned char		*copy_dst;
 
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)s1)[i] = ((unsigned char *)s2)[i];
-		i++;
-	}
-	return (s1);
+	if (!dst || !src)
+		return (NULL);
+	copy_src = (const unsigned char *)src;
+	copy_dst = (unsigned char *)dst;
+	while (n--)
+		*copy_dst++ = *copy_src++;
+	return (dst);
 }

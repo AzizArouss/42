@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstel.c                                         :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/17 07:24:04 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:09 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/13 11:27:38 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/16 11:33:00 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void		ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*next_lst;
-	t_list	*temp;
-
-	if (alst != NULL)
+	if (*alst && del)
 	{
-		next_lst = *alst;
-		while (next_lst != NULL)
-		{
-			if (del != NULL)
-				(*del)(next_lst->content, (*next_lst).content_size);
-			temp = next_lst->next;
-			free(next_lst);
-			next_lst = temp;
-		}
-		*alst = NULL;
+		ft_lstdel(&(*alst)->next, del);
+		ft_lstdelone(alst, del);
 	}
 }

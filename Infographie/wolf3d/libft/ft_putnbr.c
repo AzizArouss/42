@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aarouss <aarouss@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ide-vill <ide-vill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 08:04:47 by aarouss           #+#    #+#             */
-/*   Updated: 2015/01/30 14:50:23 by aarouss          ###   ########.fr       */
+/*   Created: 2014/11/05 08:21:19 by ide-vill          #+#    #+#             */
+/*   Updated: 2014/11/12 10:06:27 by ide-vill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int nb)
+void		ft_putnbr(int n)
 {
-	if (nb == -2147483648)
+	if (n == -2147483648)
 	{
-		ft_putstr("-2147483648");
+		ft_putstr("2147483648");
 		return ;
 	}
-	else if (nb < 0)
+	else if (n < 0)
 	{
 		ft_putchar('-');
-		nb *= (-1);
+		n = -n;
 	}
-	if (nb >= 10)
+	if (n > 9)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
 	else
-		ft_putchar(nb + '0');
+		ft_putchar(n + 48);
 }
