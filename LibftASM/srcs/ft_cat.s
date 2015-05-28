@@ -1,51 +1,53 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    ft_cat.s                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:05 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:12 by aarouss          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+;******************************************************************************;
+;                                                                              ;
+;                                                         :::      ::::::::    ;
+;    ft_cat.s                                           :+:      :+:    :+:    ;
+;                                                     +:+ +:+         +:+      ;
+;    By: kleiba <kleiba@student.42.fr>              +#+  +:+       +#+         ;
+;                                                 +#+#+#+#+#+   +#+            ;
+;    Created: 2015/05/11 12:55:06 by kleiba            #+#    #+#              ;
+;    Updated: 2015/05/11 17:18:57 by kleiba           ###   ########.fr        ;
+;                                                                              ;
+;******************************************************************************;
 
-section .bss
-	message REST 100
+	;; ft_cat(int fd);
+	;; Le but est de boucler tant que read ne trouve pas la fin du fichier.
+	;; À la suite de ça, on write ce qu'on a obtenu.
 
-	section .text
+%define MACH_SYSCALL(nb)		0x2000000 | nb
+%define STDOUT				1
+%define READ				3
+%define WRITE				4
+%define OPEN				5
+%define CLOSE				6
+
+section .data
+	buff_size	db 1
+	buffsize equ $ - buff_size			;pour envoyer 100 plus facilement (100 - 0 = 100)
+
+section .text
 	global _ft_cat
 
 _ft_cat:
-	mov r14, rdi
+ 	cmp		rdi, 0						;on regarde si il n'y a pas d'erreur
+ 	jl		.ret						;si oui on quitte
 
-_read:
-	mov		rax, 0x2000003
-	mov		rdi, r14
-	lea		rsi, [rel message]
-	mov		rdx, 100
+.while:
+	mov		rax, MACH_SYSCALL(READ)
+	push	rdi							;pour aligner la stack
+	lea		rsi, [rel buff_size]
+	mov		rdx, buffsize
+	syscall								;on read
+	jc		.ret						;si on trouve des erreur
+	cmp		rax, 0						;on quitte
+	je		.ret
+	mov		rax, MACH_SYSCALL(WRITE) 	;on prépare à WRITE ce qu'on a read
+	mov		rdi, STDOUT					;on choisit l'entrée standard
+	mov		rdx, buffsize
 	syscall
-	jc _endoffile
+	pop		rdi							;alligner la stack		
+	jmp		.while						;on recommence
 
-	cmp rax, 0
-	je _endreturn
-
-	mov 	r12, rax
-	mov		rax, 0x2000004
-	mov		rdi, 1
-	lea		rsi, [rel message]
-	mov		rdx, r12
-	syscall
-	jmp _read
-
-_endoffile:
-	mov 	r12, rax
-	mov		rax, 0x2000004
-	mov		rdi, 1
-	lea		rsi, [rel message]
-	mov		rdx, r12
-	syscall
-	ret
-
-_endreturn:
+.ret:
+	pop		rdi							;allignage de stack
 	ret
