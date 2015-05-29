@@ -1,37 +1,24 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isalpha.s                                       :+:      :+:    :+:    #
+#    ft_memset.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:11 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:14 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:05:14 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:05:38 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .data
-	
 section .text
-	global _ft_isalpha
+	global _ft_memset
 
-false:
-	mov rax, 0
+_ft_memset:
+
+	mov		rcx, rdx	;
+	mov		rdx, rdi	;
+	mov		rax, rsi	;
+	cld					;
+	rep		stosb		;
+	mov		rax, rdx	;
 	ret
-
-lol:
-	        cmp rdi, 'A'
-	        jb false
-	        cmp rdi, 'Z'
-	        ja false
-	        ret
-
-_ft_isalpha:
-	        mov rax, 1
-	        cmp rdi, 'a'
-	        jb lol 
-	        cmp rdi, 'z'
-	        ja false    
-	        ret
-
-	

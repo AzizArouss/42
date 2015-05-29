@@ -1,24 +1,27 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_memset.s                                        :+:      :+:    :+:    #
+#    ft_memcpy.s                                        :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/05/07 15:45:58 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/28 15:33:10 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:05:11 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:05:37 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
-	global _ft_memset
+	;; void *memcpy(void *dst, const void *src, size_t n)
+	;; memcpy ecrit les n premiers caractères de dst dans src
+	;; rdi -> dst
+	;; rsi -> src
+	;; rdx -> len
 
-_ft_memset:
+global _ft_memcpy
 
-	mov		rcx, rdx	;
-	mov		rdx, rdi	;
-	mov		rax, rsi	;
-	cld					;
-	rep		stosb		;
-	mov		rax, rdx	;
+_ft_memcpy:
+	push	rdi
+	mov		rcx, rdx			;string operation -> rcx fait office de compteur
+	cld							;flags à initialiser
+	rep		movsb				;le S.O à effectuer pour copier les premiers caractères. 
+	pop		rax
 	ret

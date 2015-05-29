@@ -1,24 +1,36 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_memcpy.s                                        :+:      :+:    :+:    #
+#    ft_tolower.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:26 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:17 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:04:48 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:05:00 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+	;; int tolower(int c)
+	;; tolower renvoie la valeur ascii de c modifiée si c est une majuscule.
+	;; sinon il renvoie la valeur de c
+	;; rdi -> c
+	
+global _ft_tolower
+
 section .text
-	global _ft_memcpy
+	extern _ft_isalpha
 
-segment .text
+_ft_tolower:	
+	call	_ft_isalpha
+	cmp		rax, 0
+	je		.no_tolower
+	cmp		rdi, 91
+	jl		.tolower
+	jmp		.no_tolower
 
-_ft_memcpy:
-	push rdi
-	mov rcx, rdx
-	cld
-	rep movsb
-	pop rax
+.tolower:
+	add		rdi, 32
+	
+.no_tolower:
+	mov rax, rdi
 	ret

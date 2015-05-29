@@ -6,30 +6,28 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/04/02 15:03:52 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/28 15:34:32 by aarouss          ###   ########.fr        #
+#    Updated: 2015/05/29 12:03:40 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libfts.a
 INCLUDE =
 CFLAGS = -Wall -Werror -Wextra
-SRC = srcs/ft_isascii.s \
-	  srcs/ft_isprint.s \
-	  srcs/ft_puts.s \
-	  srcs/ft_isalnum.s \
-	  srcs/ft_isdigit.s \
-	  srcs/ft_memcpy.s \
-	  srcs/ft_strcat.s \
-	  srcs/ft_tolower.s \
-	  srcs/ft_isalpha.s \
-	  srcs/ft_isnum.s \
-	  srcs/ft_strdup.s \
-	  srcs/ft_toupper.s \
-	  srcs/ft_bzero.s \
-	  srcs/ft_cat.s \
-	  srcs/ft_memset.s \
-	  srcs/ft_strcpy.s \
-	  srcs/ft_strlen.s \
+SRC = srcs/part_1/ft_bzero.s \
+	  srcs/part_1/ft_strcat.s \
+	  srcs/part_1/ft_isalpha.s \
+	  srcs/part_1/ft_isdigit.s \
+	  srcs/part_1/ft_isalnum.s \
+	  srcs/part_1/ft_isascii.s \
+	  srcs/part_1/ft_isprint.s \
+	  srcs/part_1/ft_toupper.s \
+	  srcs/part_1/ft_tolower.s \
+	  srcs/part_1/ft_puts.s \
+	  srcs/part_2/ft_strlen.s \
+	  srcs/part_2/ft_memset.s \
+	  srcs/part_2/ft_memcpy.s \
+	  srcs/part_2/ft_strdup.s \
+	  srcs/part_3/ft_cat.s \
 
 CC = gcc
 LIB = ar rc
@@ -39,17 +37,21 @@ OBJS= $(SRC:.s=.o)
 all: $(NAME)
 
 $(NAME):$(OBJS)
-	$(LIB) $(NAME) $(OBJS)
+	@echo "\033[7;37m asm_lib | Compile all .o    \033[0m"
+	@$(LIB) $(NAME) $(OBJS)
 	@ranlib $(NAME)
 
 %.o: %.s
-	~/.brew/bin/nasm -f macho64 $<
+	@echo "\033[7;37m asm_lib | Compile all .s    \033[0m"
+	@~/.brew/bin/nasm -f macho64 $<
 
 clean:
-	$(RM) $(OBJS)
+	@echo "\033[7;37m asm_lib | Delete all .o     \033[0m"
+	@$(RM) $(OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "\033[7;37m asm_lib | Delete a.out file \033[0m"
+	@$(RM) $(NAME)
 
 re: fclean all
 

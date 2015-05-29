@@ -1,28 +1,24 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isdigit.s                                       :+:      :+:    :+:    #
+#    ft_mult.s                                          :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:16 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:15 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:06:09 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:06:10 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .data
+	;; int	ft_mult(int i, int j)
+	;; this function multiplies i and j.
+	;; it returns its result.
 	
-section .text
-	global _ft_isdigit
+global _ft_mult
 
-_ft_isdigit:
-	mov rax, 1
-	cmp rdi, '0'
-	jb false 
-	cmp rdi, '9'
-	ja false
-	ret
-
-false:
-	mov rax, 0
+_ft_mult:
+	push	rsi
+	mov		rax, rdi
+	mul		rsi
+	pop		rsi
 	ret

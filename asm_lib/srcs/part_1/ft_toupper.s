@@ -1,28 +1,36 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_strcat.s                                        :+:      :+:    :+:    #
+#    ft_toupper.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:33 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:19 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:04:51 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:04:54 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
-    global _ft_strcat
-    extern _ft_strcpy
+	;; int toupper(int c)
+	;; toupper renvoie la valeur ascii de c modifiée si c est une minuscule.
+	;; sinon il renvoie la valeur de c
+	;; rdi -> c
+	
+global _ft_toupper
 
-_ft_strcat:
-    mov         r8,     rdi
-    sub         rax,    rax
-    sub         rcx,    rcx
-    not         rcx
-    cld
-    repne       scasb
-    dec         rdi
-    mov byte    [rdi],  '9'
-    call        _ft_strcpy
-    mov         rax,    r8
-    ret
+section .text
+	extern _ft_isalpha
+
+_ft_toupper:	
+	call	_ft_isalpha
+	cmp		rax, 0
+	je		.no_toupper
+	cmp		rdi, 96
+	jg		.toupper
+	jmp		.no_toupper
+
+.toupper:
+	sub		rdi, 32
+	
+.no_toupper:
+	mov rax, rdi
+	ret

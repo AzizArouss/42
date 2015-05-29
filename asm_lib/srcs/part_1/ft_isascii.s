@@ -5,22 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:13 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/28 15:36:28 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:04:29 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:04:57 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .text
-	global _ft_isascii
+	;; rdi est le premier paramètre de la fonction
+	;; rsi le second
+	;; rdx le troisième
+	;; rcx le quatrième
+	;; le protip de Ary -> Les 'd' sont en premier (orde alphabétique)
+	;; mettre le prototype de la fonction en commentaire pour savoir quoi faire. 
 
-_ft_isascii:
-	mov rax, 1
-	cmp rdi, 0
-	jb false
-	cmp rdi, 127
-	ja false
+global _ft_isascii
+	
+start:
+	call _ft_isascii
 	ret
 
-false:
-	mov rax, 0
+isascii:
+	mov rax, 1
+	ret
+	
+isnotascii:
+	mov rax, 0 					;rax est la valeur de retour
+	ret
+	
+_ft_isascii:
+	cmp rdi, 127 				;on compare rdi et 127
+	jbe isascii					;si c'est inférieur ou égal
+	jmp isnotascii				;on jump à isnotascii
 	ret

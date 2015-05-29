@@ -1,51 +1,44 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_toupper.s                                       :+:      :+:    :+:    #
+#    ft_isalpha.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:45 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:23 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:04:25 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:04:57 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .data
+global _ft_isalpha
 
-section .text
-    global _ft_toupper
+isnotalpha:
+	mov rax, 0
+	ret
 
+isalpha:
+	mov rax, 1
+	ret
+
+ns:	
+	cmp rdi, 123
+	jl isalpha
+	ret
+	
+sf:	
+	cmp rdi, 91
+	jl isalpha
+	cmp rdi, 96
+	jg ns			;ns pour ninetysix.
+	jmp isnotalpha
+	ret
+
+	
 _ft_isalpha:
-    mov rax, 1
-    cmp rdi, 'a'
-    jb lol 
-    cmp rdi, 'z'
-    ja false2   
-    ret
-
-lol:
-   cmp rdi, 'A'
-   jb false
-   cmp rdi, 'Z'
-   ja false2
-   ret
-
-false2:
-    mov rax, 0
-    ret
-
-_ft_toupper:
-    call _ft_isalpha
-    cmp rax, 0
-    je false
-    cmp rdi, 97
-    jl false
-
-true:
-    mov rax, rdi
-    sub rax, 32
-    ret
-
-false:
-    mov rax, rdi
-    ret
+	cmp rdi, 65
+	jl isnotalpha 				;jump less
+	cmp rdi, 122
+	jg isnotalpha				;jump greater
+	cmp rdi, 64
+	jg sf			;va falloir vérifier sf pour sixty five
+	jmp isnotalpha

@@ -1,28 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isprint.s                                       :+:      :+:    :+:    #
+#    ft_add.s                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:20 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:16 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:06:01 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:06:04 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .data
+	;; int	ft_add(int i, int j)
+	;; this function adds i and j.
+	;; it returns its result.
+	
+global _ft_add
 
-section .text
-	global _ft_isprint
-
-_ft_isprint:
-	mov rax, 1
-	cmp rdi, 33
-	jb false
-	cmp rdi, 126
-	ja false
-	ret
-
-false:
-	mov rax, 0
+_ft_add:
+	push rsi
+	mov	r8, rsi
+	add	r8, rdi
+	pop	rsi
+	mov	rax, r8
 	ret

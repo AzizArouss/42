@@ -1,33 +1,33 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    ft_isnum.s                                         :+:      :+:    :+:    #
+#    ft_isdigit.s                                       :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2015/04/02 15:04:18 by aarouss           #+#    #+#              #
-#    Updated: 2015/04/02 15:05:15 by aarouss          ###   ########.fr        #
+#    Created: 2015/05/29 12:04:33 by aarouss           #+#    #+#              #
+#    Updated: 2015/05/29 12:04:58 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-section .data
-	
-section .text
-	global start
-	global _ft_isnum
-	
+global _ft_isdigit
+
 start:
-	jmp _ft_isnum
+	call _ft_isdigit
 	ret
 
-false:
+isnotdigit:
+	mov rax, 0
+	ret
+
+isdigit:
 	mov rax, 1
 	ret
 
-_ft_isnum:
-	mov rax, 0
-	cmp rdi, '0'
-	jb false 
-	cmp rdi, '9'
-	ja false
+_ft_isdigit:
+	cmp rdi, 48
+	jl isnotdigit				;jump less
+	cmp rdi, 57
+	jg isnotdigit				;jump greater
+	jmp isdigit
 	ret
