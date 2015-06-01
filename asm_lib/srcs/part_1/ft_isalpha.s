@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:04:25 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:04:57 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:09:06 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,24 @@ isalpha:
 	mov rax, 1
 	ret
 
-ns:	
+ns:
 	cmp rdi, 123
 	jl isalpha
 	ret
-	
-sf:	
+
+sf:
 	cmp rdi, 91
 	jl isalpha
 	cmp rdi, 96
-	jg ns			;ns pour ninetysix.
+	jg ns						;ns pour ninetysix.
 	jmp isnotalpha
 	ret
 
-	
 _ft_isalpha:
 	cmp rdi, 65
 	jl isnotalpha 				;jump less
 	cmp rdi, 122
 	jg isnotalpha				;jump greater
 	cmp rdi, 64
-	jg sf			;va falloir vérifier sf pour sixty five
+	jg sf						;va falloir vérifier sf pour sixty five
 	jmp isnotalpha

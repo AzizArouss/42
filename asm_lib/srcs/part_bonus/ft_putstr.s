@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:06:14 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:06:16 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:23:27 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,35 +16,35 @@
 	;; 4 le syscall write
 
 %define MACH_SYSCALL(nb)		0x2000000 | nb
-%define STDOUT				1
-%define WRITE				4
+%define STDOUT					1
+%define WRITE					4
 	
 global _ft_putstr
 
 section .text
-	extern 	_ft_strlen			;va s'avérer utile
+	extern 	_ft_strlen					;va s'avérer utile
 	
 _ft_putstr:
-	cmp 	rdi, 0
-	je 		.nul
-	call 	_ft_strlen
-	mov 	rdx, rax				 ;len
-	mov 	rcx, rdi				 ;on mov l'adresse de la string
-	mov 	rax, MACH_SYSCALL(WRITE) ;on va appeler write
-	mov 	rdi, STDOUT				 ;dans l'entrée standard
-	lea 	rsi, [rcx]			 	 ;on load effectiv adress là où on veut écrire
-	syscall						 	 ;tout va s'écrire
-	xor		rax, rax
+	cmp rdi, 0
+	je .nul
+	call _ft_strlen
+	mov rdx, rax					;len
+	mov rcx, rdi					;on mov l'adresse de la string
+	mov rax, MACH_SYSCALL(WRITE)	;on va appeler write
+	mov rdi, STDOUT					;dans l'entrée standard
+	lea rsi, [rcx]			 		;on load effectiv adress là où on veut écrire
+	syscall					 		;tout va s'écrire
+	xor rax, rax
 	ret
 
-.nul:	
-	mov		rdi, STDOUT	
-	lea 	rsi, [rel null_msg]
-	mov 	rdx, 7
-	mov 	rax, MACH_SYSCALL(WRITE)
+.nul:
+	mov rdi, STDOUT	
+	lea rsi, [rel null_msg]
+	mov rdx, 7
+	mov rax, MACH_SYSCALL(WRITE)
 	syscall
-	xor		rax, rax
+	xor rax, rax
 	ret
-	
+
 section .data
 	null_msg db "(null)", 10

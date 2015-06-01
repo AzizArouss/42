@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:04:13 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:04:55 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:26:30 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,6 @@ _ft_bzero:
 	dec rsi							;je décrémente rsi (le but sera d'arriver à 0)
 	mov [rdi + rsi], byte 0			;on stock le byte 0, soit NULL, à l'adresse rdi + rsi
 	jmp _ft_bzero					;on rappelle, ça fait office de while
-	
+
 end:
 	ret

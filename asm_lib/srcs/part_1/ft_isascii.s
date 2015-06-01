@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:04:29 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:04:57 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:10:06 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@
 	;; mettre le prototype de la fonction en commentaire pour savoir quoi faire. 
 
 global _ft_isascii
-	
+
 start:
 	call _ft_isascii
 	ret
@@ -26,13 +26,13 @@ start:
 isascii:
 	mov rax, 1
 	ret
-	
+
 isnotascii:
-	mov rax, 0 					;rax est la valeur de retour
+	mov rax, 0					;rax est la valeur de retour
 	ret
-	
+
 _ft_isascii:
-	cmp rdi, 127 				;on compare rdi et 127
+	cmp rdi, 127				;on compare rdi et 127
 	jbe isascii					;si c'est inférieur ou égal
 	jmp isnotascii				;on jump à isnotascii
 	ret

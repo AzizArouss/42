@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:05:11 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:05:37 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:14:12 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ global _ft_memcpy
 
 _ft_memcpy:
 	push	rdi
-	mov		rcx, rdx			;string operation -> rcx fait office de compteur
-	cld							;flags à initialiser
-	rep		movsb				;le S.O à effectuer pour copier les premiers caractères. 
+	mov		rcx, rdx				;string operation -> rcx fait office de compteur
+	cld								;flags à initialiser
+	rep		movsb					;le S.O à effectuer pour copier les premiers caractères. 
 	pop		rax
 	ret

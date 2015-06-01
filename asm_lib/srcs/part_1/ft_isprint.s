@@ -6,11 +6,11 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:04:38 by aarouss           #+#    #+#              #
-#    Updated: 2015/05/29 12:04:58 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/01 15:11:21 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-global	_ft_isprint
+global _ft_isprint
 
 _ft_isprint:
 	cmp rdi, 32
