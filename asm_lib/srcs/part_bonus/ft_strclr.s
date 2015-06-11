@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:06:26 by aarouss           #+#    #+#              #
-#    Updated: 2015/06/01 15:25:25 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/11 14:40:24 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,10 @@ _ft_strclr:
 	xor rax, rax
 
 .while:
-	cmp rsi, 0						;je compare n et 0
-	jz end							;si c'est égale à 0, je retourne
-	dec rsi							;je décrémente rsi (le but sera d'arriver à 0)
-	mov [rdi + rsi], byte 0			;on stock le byte 0, soit NULL, à l'adresse rdi + rsi
+	cmp rsi, 0					;je compare n et 0
+	jz end						;si c'est égale à 0, je retourne
+	dec rsi						;je décrémente rsi (le but sera d'arriver à 0)
+	mov [rdi + rsi], byte 0		;on stock le byte 0, soit NULL, à l'adresse rdi + rsi
 	jmp .while
 
 end:

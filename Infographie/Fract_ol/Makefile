@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/09 10:04:46 by aarouss           #+#    #+#              #
-#    Updated: 2015/06/09 10:04:47 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/11 14:51:46 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,21 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(HEAD)
-	make -C minilibx_macos/
-	make -C libft/
-	$(CC) $(OBJ) -o $(NAME) $(LIBS)
+	@echo "\033[7;34m fract_ol > Compile all .o      \033[0m"
+	@make -C minilibx_macos/
+	@make -C libft/
+	@$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
 .PHONY: clean fclean
 
 clean:
-	make -C libft/ clean
-	/bin/rm -f $(OBJ)
+	@echo "\033[7;31m fract_ol > Delete all .o       \033[0m"
+	@make -C libft/ clean
+	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	make -C libft/ fclean
-	/bin/rm -f $(NAME)
+	@echo "\033[7;32m fract_ol > Delete fractol file \033[0m"
+	@make -C libft/ fclean
+	@/bin/rm -f $(NAME)
 
 re: fclean all

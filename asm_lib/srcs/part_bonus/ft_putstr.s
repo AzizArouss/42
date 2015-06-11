@@ -6,7 +6,7 @@
 #    By: aarouss <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/29 12:06:14 by aarouss           #+#    #+#              #
-#    Updated: 2015/06/01 15:23:27 by aarouss          ###   ########.fr        #
+#    Updated: 2015/06/11 13:50:12 by aarouss          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,12 +18,12 @@
 %define MACH_SYSCALL(nb)		0x2000000 | nb
 %define STDOUT					1
 %define WRITE					4
-	
+
 global _ft_putstr
 
 section .text
-	extern 	_ft_strlen					;va s'avérer utile
-	
+	extern 	_ft_strlen				;va s'avérer utile
+
 _ft_putstr:
 	cmp rdi, 0
 	je .nul
